@@ -1,338 +1,600 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayu Afriyadi — QA Engineer</title>
+<meta name="description" content="Portfolio of Bayu Afriyadi — QA Engineer specializing in automation testing for healthtech products.">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d0d;
+  --paper:#f5f2eb;
+  --paper2:#ede9df;
+  --lime:#c8f135;
+  --pink:#ff3b8b;
+  --blue:#1e5cff;
+  --orange:#ff6b1a;
+  --sky:#a8d8ff;
+  --violet:#8b5cf6;
+  --white:#ffffff;
+  --display:'Unbounded',sans-serif;
+  --body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:15px;
+  line-height:1.5;
+  overflow-x:hidden;
+  cursor:none;
+}
 
-    <title>Bayu Afriyadi</title>
+/* custom cursor */
+#cursor{
+  width:12px;height:12px;
+  background:var(--pink);
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  z-index:9999;
+  transition:transform 0.1s ease;
+  mix-blend-mode:multiply;
+}
+#cursor-ring{
+  width:36px;height:36px;
+  border:1.5px solid var(--ink);
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  z-index:9998;
+  transition:left 0.12s ease,top 0.12s ease,width 0.2s,height 0.2s;
+}
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/unicons.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:56px;
+  background:rgba(245,242,235,0.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1.5px solid var(--ink);
+}
+.nav-logo{
+  font-family:var(--display);
+  font-size:13px;font-weight:700;
+  letter-spacing:-0.02em;
+}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{
+  font-size:12px;font-weight:500;
+  text-decoration:none;color:var(--ink);
+  letter-spacing:0.02em;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--pink)}
+.nav-badge{
+  background:var(--lime);
+  color:var(--ink);
+  font-size:10px;font-weight:700;
+  padding:4px 10px;border-radius:20px;
+  border:1.5px solid var(--ink);
+  font-family:var(--display);
+  letter-spacing:0.02em;
+}
 
-    <!-- MAIN STYLE -->
-    <link rel="stylesheet" href="css/tooplate-style.css">
-    
-<!--
+/* MAIN */
+main{
+  max-width:1000px;
+  margin:0 auto;
+  padding:56px 1.5rem 4rem;
+}
 
-Tooplate 2115 Marvel
+/* HERO */
+.hero{
+  padding:3rem 0 2rem;
+  position:relative;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:500;
+  letter-spacing:0.12em;
+  color:var(--ink);
+  margin-bottom:1.5rem;
+  text-transform:uppercase;
+}
+.hero-dot{
+  width:8px;height:8px;
+  background:var(--lime);
+  border-radius:50%;
+  border:1.5px solid var(--ink);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
 
-https://www.tooplate.com/view/2115-marvel
+.hero-name{
+  font-family:var(--display);
+  font-size:clamp(3.5rem,9vw,7rem);
+  font-weight:900;
+  line-height:0.92;
+  letter-spacing:-0.04em;
+  margin-bottom:1.5rem;
+}
+.hero-name .line2{
+  display:block;
+  color:var(--white);
+  -webkit-text-stroke:2px var(--ink);
+  letter-spacing:-0.04em;
+}
+.hero-name .line3{
+  display:block;
+  font-size:clamp(1.2rem,3vw,2rem);
+  font-family:var(--body);
+  font-weight:300;
+  color:#666;
+  letter-spacing:-0.01em;
+  margin-top:0.5rem;
+}
 
--->
-  </head>
-  <body>
+/* MARQUEE */
+.hero-strip{
+  display:flex;align-items:center;
+  overflow:hidden;
+  border-top:1.5px solid var(--ink);
+  border-bottom:1.5px solid var(--ink);
+  background:var(--lime);
+  margin:2rem 0;
+}
+.hero-strip-inner{
+  display:flex;
+  animation:marquee 14s linear infinite;
+  white-space:nowrap;
+}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.strip-item{
+  font-family:var(--display);
+  font-size:12px;font-weight:700;
+  padding:8px 24px;
+  letter-spacing:0.04em;
+  color:var(--ink);
+  border-right:1.5px solid var(--ink);
+}
 
-    <!-- MENU -->
-    <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><i class='uil uil-user'></i> Bayu</a>
+/* BENTO GRID */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:12px;
+  margin:2rem 0;
+}
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
+.cell{
+  background:var(--white);
+  border:1.5px solid var(--ink);
+  border-radius:16px;
+  padding:1.5rem;
+  position:relative;
+  overflow:hidden;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cell:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:4px 4px 0 var(--ink);
+}
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link"><span data-hover="About">About</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#project" class="nav-link"><span data-hover="Projects">Projects</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#resume" class="nav-link"><span data-hover="Resume">Resume</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link"><span data-hover="Contact">Contact</span></a>
-                    </li>
-                </ul>
+.c-2{grid-column:span 2}
+.c-3{grid-column:span 3}
+.c-4{grid-column:span 4}
+.c-5{grid-column:span 5}
+.c-6{grid-column:span 6}
+.c-7{grid-column:span 7}
+.c-8{grid-column:span 8}
+.c-9{grid-column:span 9}
+.c-12{grid-column:span 12}
+.r-2{grid-row:span 2}
 
-                <ul class="navbar-nav ml-lg-auto">
-                    <div class="ml-lg-4">
-                      <div class="color-mode d-lg-flex justify-content-center align-items-center">
-                        <i class="color-mode-icon"></i>
-                        Color mode
-                      </div>
-                    </div>
-                </ul>
-            </div>
+.cell-lime{background:var(--lime)}
+.cell-pink{background:var(--pink);color:var(--white)}
+.cell-blue{background:var(--blue);color:var(--white)}
+.cell-ink{background:var(--ink);color:var(--white)}
+.cell-orange{background:var(--orange);color:var(--white)}
+.cell-sky{background:var(--sky)}
+
+.cell-label{
+  font-size:10px;font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  opacity:0.5;
+  margin-bottom:0.75rem;
+}
+.cell-title{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:1rem;
+  line-height:1.2;
+  margin-bottom:0.5rem;
+  letter-spacing:-0.02em;
+}
+.cell-body{
+  font-size:12px;
+  line-height:1.7;
+  opacity:0.85;
+}
+
+.stat-big{
+  font-family:var(--display);
+  font-size:4rem;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-0.04em;
+}
+.stat-unit{font-size:1.5rem}
+
+.tag-cloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.75rem}
+.tag-pill{
+  font-size:11px;font-weight:500;
+  padding:4px 12px;
+  border-radius:20px;
+  border:1.5px solid currentColor;
+  white-space:nowrap;
+}
+.cell-blue .tag-pill{border-color:rgba(255,255,255,0.85);color:#fff;background:rgba(255,255,255,0.15)}
+.cell-ink .tag-pill{border-color:rgba(255,255,255,0.6);color:#fff;background:rgba(255,255,255,0.1)}
+.cell-lime .tag-pill{border-color:rgba(0,0,0,0.5);color:#0d0d0d;background:rgba(0,0,0,0.08)}
+.cell-orange .tag-pill{border-color:rgba(255,255,255,0.85);color:#fff;background:rgba(255,255,255,0.15)}
+.cell .tag-pill{border-color:rgba(0,0,0,0.4);color:#0d0d0d;font-weight:600;background:rgba(0,0,0,0.05)}
+
+.exp-item{
+  padding:0.75rem 0;
+  border-bottom:1px solid rgba(0,0,0,0.08);
+}
+.exp-item:last-child{border-bottom:none;padding-bottom:0}
+.exp-item:first-child{padding-top:0}
+.exp-meta{
+  font-size:10px;font-weight:600;
+  letter-spacing:0.08em;text-transform:uppercase;
+  opacity:0.45;margin-bottom:3px;
+}
+.exp-role{
+  font-family:var(--display);
+  font-size:13px;font-weight:700;
+  letter-spacing:-0.01em;
+}
+.exp-co{font-size:11px;opacity:0.6;margin-top:2px}
+
+.proj-list{display:flex;flex-direction:column;gap:8px;margin-top:0.5rem}
+.proj-item{
+  background:rgba(255,255,255,0.07);
+  border-radius:8px;
+  padding:10px 12px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.proj-name{font-size:12px;font-weight:500}
+.proj-sub{font-size:11px;opacity:0.5;margin-top:2px}
+.proj-badge{
+  font-size:9px;font-weight:700;letter-spacing:0.06em;
+  padding:2px 8px;border-radius:10px;
+  text-transform:uppercase;white-space:nowrap;margin-left:8px;
+}
+.badge-active{background:var(--lime);color:var(--ink)}
+.badge-wip{background:var(--orange);color:var(--white)}
+.badge-done{background:rgba(255,255,255,0.15);color:inherit}
+
+.overflow-text{
+  font-family:var(--display);
+  font-size:5rem;font-weight:900;
+  letter-spacing:-0.04em;line-height:1;
+  opacity:0.07;position:absolute;
+  bottom:-10px;right:-10px;
+  white-space:nowrap;user-select:none;
+}
+
+.avail-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--lime);
+  border:1.5px solid var(--ink);
+  border-radius:30px;
+  padding:8px 18px;
+  font-size:11px;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;
+}
+.avail-dot{
+  width:7px;height:7px;background:var(--ink);
+  border-radius:50%;animation:pulse 1.5s ease-in-out infinite;
+}
+
+.section-label{
+  font-family:var(--display);
+  font-size:10px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:#999;
+  margin:3rem 0 0.5rem;
+}
+
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-in.show{opacity:1;transform:translateY(0)}
+
+footer{
+  border-top:1.5px solid var(--ink);
+  padding:1.5rem;text-align:center;
+  font-size:11px;letter-spacing:0.04em;
+  font-weight:500;color:#888;
+}
+
+@media(max-width:700px){
+  .c-2,.c-3,.c-4,.c-5,.c-6,.c-7,.c-8,.c-9{grid-column:span 12}
+  .r-2{grid-row:span 1}
+  .stat-big{font-size:3rem}
+  .hero-name{font-size:clamp(2.8rem,12vw,5rem)}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <div class="nav-logo">BAYU.AF</div>
+  <div class="nav-links">
+    <a href="#about">about</a>
+    <a href="#skills">skills</a>
+    <a href="#experience">experience</a>
+    <a href="#projects">projects</a>
+  </div>
+  <div class="nav-badge">Open to work</div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <div class="hero-dot"></div>
+      QA Engineer · Bogor, ID · Healthtech
+    </div>
+    <h1 class="hero-name">
+      BAYU
+      <span class="line2">AFRIYADI</span>
+      <span class="line3">Making software worthy of trust, one test at a time.</span>
+    </h1>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="hero-strip">
+    <div class="hero-strip-inner">
+      <span class="strip-item">PLAYWRIGHT</span>
+      <span class="strip-item">APPIUM</span>
+      <span class="strip-item">PYTEST</span>
+      <span class="strip-item">TYPESCRIPT</span>
+      <span class="strip-item">PYTHON</span>
+      <span class="strip-item">API TESTING</span>
+      <span class="strip-item">MOBILE QA</span>
+      <span class="strip-item">HEALTHTECH</span>
+      <span class="strip-item">PLAYWRIGHT</span>
+      <span class="strip-item">APPIUM</span>
+      <span class="strip-item">PYTEST</span>
+      <span class="strip-item">TYPESCRIPT</span>
+      <span class="strip-item">PYTHON</span>
+      <span class="strip-item">API TESTING</span>
+      <span class="strip-item">MOBILE QA</span>
+      <span class="strip-item">HEALTHTECH</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <p class="section-label" id="about">About</p>
+  <div class="bento fade-in">
+    <div class="cell cell-ink c-7 r-2">
+      <div class="cell-label">Who I am</div>
+      <div style="font-family:var(--display);font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;line-height:1.3;margin-bottom:1rem">
+        Fresh grad. Solo QA. Five products. Zero hand-holding.
+      </div>
+      <div class="cell-body" style="opacity:0.7">
+        I jumped straight from UNIKOM's Informatics Engineering into owning quality end-to-end at Yesdok — a healthtech startup with web panels, mobile apps, and live payment flows. No senior QA to shadow. Just me, my frameworks, and a lot of bugs to find before users do.
+      </div>
+      <div class="overflow-text">QA</div>
+    </div>
+    <div class="cell cell-lime c-5">
+      <div class="cell-label">Experience</div>
+      <div class="stat-big">10<span class="stat-unit">mo+</span></div>
+      <div class="cell-body" style="margin-top:0.5rem">Professional QA at healthtech startup</div>
+    </div>
+    <div class="cell cell-blue c-3">
+      <div class="cell-label">Products</div>
+      <div class="stat-big">5</div>
+      <div class="cell-body" style="margin-top:0.5rem;color:rgba(255,255,255,0.7)">Apps under my watch</div>
+    </div>
+    <div class="cell cell-pink c-2">
+      <div class="cell-label">Stacks</div>
+      <div class="stat-big" style="font-size:3rem">3</div>
+      <div class="cell-body" style="margin-top:0.5rem;color:rgba(255,255,255,0.7)">Web · Mobile · API</div>
+    </div>
+    <div class="cell cell-sky c-5" style="display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;gap:12px">
+      <div class="avail-pill"><div class="avail-dot"></div>Open to work</div>
+      <div class="cell-body">Looking for QA / Lead QA opportunities</div>
+    </div>
+    <div class="cell c-7">
+      <div class="cell-label">Education</div>
+      <div class="cell-title">Informatics Engineering</div>
+      <div class="cell-body">UNIKOM — Universitas Komputer Indonesia · Class of 2024</div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <p class="section-label" id="skills">Skills</p>
+  <div class="bento fade-in">
+    <div class="cell cell-blue c-6">
+      <div class="cell-label">Web Automation</div>
+      <div class="cell-title">Browser Testing</div>
+      <div class="tag-cloud">
+        <span class="tag-pill">Playwright</span>
+        <span class="tag-pill">TypeScript</span>
+        <span class="tag-pill">Selenium</span>
+        <span class="tag-pill">Page Object Model</span>
+      </div>
+    </div>
+    <div class="cell c-6">
+      <div class="cell-label">Mobile Automation</div>
+      <div class="cell-title">iOS & Android</div>
+      <div class="tag-cloud">
+        <span class="tag-pill">Appium</span>
+        <span class="tag-pill">Python</span>
+        <span class="tag-pill">iOS XCUITest</span>
+        <span class="tag-pill">Android UIAutomator2</span>
+      </div>
+    </div>
+    <div class="cell cell-lime c-4">
+      <div class="cell-label">API Testing</div>
+      <div class="cell-title">Backend Coverage</div>
+      <div class="tag-cloud">
+        <span class="tag-pill">Pytest</span>
+        <span class="tag-pill">Requests</span>
+        <span class="tag-pill">Postman</span>
+      </div>
+    </div>
+    <div class="cell c-4">
+      <div class="cell-label">Tools & Process</div>
+      <div class="cell-title">Workflow</div>
+      <div class="tag-cloud">
+        <span class="tag-pill">Git / GitHub</span>
+        <span class="tag-pill">Jira</span>
+        <span class="tag-pill">Charles Proxy</span>
+        <span class="tag-pill">Notion</span>
+      </div>
+    </div>
+    <div class="cell cell-orange c-4">
+      <div class="cell-label">Domain</div>
+      <div class="cell-title">Healthtech</div>
+      <div class="tag-cloud">
+        <span class="tag-pill">Midtrans Payment</span>
+        <span class="tag-pill">IFG Chat</span>
+        <span class="tag-pill">CME Systems</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <p class="section-label" id="experience">Experience</p>
+  <div class="bento fade-in">
+    <div class="cell c-12">
+      <div class="cell-label">Work history</div>
+      <div class="exp-item">
+        <div class="exp-meta">Jun 2024 — Present · Full-time</div>
+        <div class="exp-role">QA Engineer</div>
+        <div class="exp-co">Yesdok Healthtech — Sole QA, 5 products end-to-end</div>
+        <div class="cell-body" style="margin-top:0.75rem">
+          Responsible for quality across Panel Dokter Spesialis, Panel Dokter 24 Jam (web), Yesdok App, Yesdok for Doctor, and Locum (mobile, Essex Bio Singapore partnership). Built the entire automation framework from scratch — Playwright for web, Appium for mobile, Pytest for API. Investigated high-severity bugs including PHP memory exhaustion on the chat history endpoint caused by missing pagination.
         </div>
-    </nav>
-
-    <!-- ABOUT -->
-    <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
-                    <div class="about-text">
-                        <small class="small-text">Welcome to <span class="mobile-block">my portfolio website!</span></small>
-                        <h1 class="animated animated-text mb-4">
-                            <span class="mr-3">Hey folks,I'm</span>
-                                <div class="animated-info">
-                                    <span class="animated-item">Bayu Afriyadi</span>
-                                    <span class="animated-item">Android Dev</span>
-                                    <span class="animated-item">UI Designer</span>
-                                </div>
-                        </h1>
-
-                        <p>Dedicated Computer Science student at Indonesian Computer University, with a keen interest in Android Development and a strong desire to enhance my skills in this field. Eager to contribute to innovative IT projects and collaborate effectively in a team-based environment.</p>
-                        
-                        <div class="custom-btn-group mt-4">
-                          <a href="https://drive.google.com/file/d/1ljM7gqFRX4BHRqOc8UZum3FSwkSc3vg7/view?usp=sharing" download target="_blank" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i> Download Resume</a>
-                          <a href="#contact" class="btn custom-btn custom-btn-bg custom-btn-link">Contact Me</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-md-12 col-12">
-                    <div class="about-image svg">
-                        <img src="images/undraw/undraw_mobile_dev.svg" class="img-fluid" alt="svg image">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="project py-5" id="project">
-        <div class="container">
-                
-                <div class="row">
-                  <div class="col-lg-11 text-center mx-auto col-12">
-
-                      <div class="col-lg-8 mx-auto">
-                        <h2>Some Apps that I build.</h2>
-                      </div>
-
-                      <div class="owl-carousel owl-theme">
-                        <div class="item">
-                          <div class="project-info d-flex justify-content-center mt-5">
-                            <div class="card" style="width: 50rem;">
-                              <div class="row">
-                                <div class="col">
-                                  <img class="card-img-top" src="images/project/ttt-home.jpeg" alt="project image">
-                                </div>
-                                <div class="col">
-                                  <img class="card-img-top" src="images/project/ttt-camera.jpeg" alt="project image">
-                                </div>
-                                <div class="col">
-                                  <img class="card-img-top" src="images/project/ttt-profile.jpeg" alt="project image">
-                                </div>
-                              </div>
-                          
-                              <div class="card-body mb-3">
-                                <p class="card-text">This is a mobile app that can scan waste such as plastic and provide a recommendation about recycling product that can be made from that waste.</p>
-                                <a href="https://github.com/bayuafriyadi5/TrashtoTreasure" class="btn custom-btn custom-btn-bg custom-btn-link">See Repo</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div class="item">
-                          <div class="project-info d-flex justify-content-center mt-5">
-                            <div class="card" style="width: 50rem;">
-                              <div class="row">
-                                <div class="col">
-                                  <img class="card-img-top" src="images/project/story-login.jpeg" alt="project image">
-                                </div>
-                                <div class="col">
-                                  <img class="card-img-top" src="images/project/story-home.jpeg" alt="project image">
-                                </div>
-                                <div class="col">
-                                  <img class="card-img-top" src="images/project/story-map.jpeg" alt="project image">
-                                </div>
-                              </div>
-                          
-                              <div class="card-body mb-3">
-                                <p class="card-text">This is a mobile app is my submission from dicoding academy so basically this app can upload and show list of stories using dicoding Api. This app basically just like instagram.</p>
-                                <a href="https://github.com/bayuafriyadi5/StoryApp" class="btn custom-btn custom-btn-bg custom-btn-link">See Repo</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="item">
-                          <div class="project-info d-flex justify-content-center mt-5">
-                            <div class="card" style="width: 50rem;">
-                              <div class="row">
-                                <div class="col">
-                                  <img class="card-img-top" src="images/project/spotifai-home.jpeg" alt="project image">
-                                </div>
-                                <div class="col">
-                                  <img class="card-img-top" src="images/project/spotifai-detail.jpeg" alt="project image">
-                                </div>
-                                <div class="col">
-                                  <img class="card-img-top" src="images/project/spotifai-fav.jpeg" alt="project image">
-                                </div>
-                              </div>
-                          
-                              <div class="card-body mb-3">
-                                <p class="card-text">This is a mobile app is my submission from dicoding academy so basically this app is like can show list of music and detail of the music such as title,singer,genre and others. This app is build using Jetpack Compose library.</p>
-                                <a href="" class="btn custom-btn custom-btn-bg custom-btn-link">See Repo</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        
-                      </div>
-
-                  </div>
-                </div>
-        </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="resume">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-6 col-12">
-                  <h2 class="mb-4">Experiences</h2>
-
-                    <div class="timeline">
-                        <div class="timeline-wrapper">
-                             <div class="timeline-yr">
-                                  <span>2023</span>
-                             </div>
-                             <div class="timeline-info">
-                                  <h3><span>Android Developer</span><small>Bangkit Academy</small></h3>
-                                  <p>I've been working on project named Trash to Treasure.This is a mobile app that can scan waste such as plastic and provide a recommendation about recycling product that can be made from that waste.</p>
-                             </div>
-                        </div>
-
-                        
-
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-12">
-                  <h2 class="mb-4 mobile-mt-2">Educations</h2>
-
-                    <div class="timeline">
-                        <div class="timeline-wrapper">
-                             <div class="timeline-yr">
-                                  <span>2017</span>
-                             </div>
-                             <div class="timeline-info">
-                                  <h3><span>Wikrama Vocational School</span></h3>
-                                  <p>Software Engineering.</p>
-                             </div>
-                        </div>
-
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>2020</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>Indonesian Computer University</span></h3>
-                                <p>Informatics Engineering.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>2023</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>Bangkit Academy</span></h3>
-                                <p>Android Developer.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact py-5" id="contact">
-      <div class="container">
-        <div class="row">
-          
-          <div class="col-lg-5 mr-lg-5 col-12">
-            <div class="google-map w-100">
-              <img src="images/profile/benget.jpg" class="img-fluid" alt="project image">
-            </div>
-
-            <div class="contact-info d-flex justify-content-between align-items-center py-4 px-lg-5">
-                <div class="contact-info-item">
-                  <h3 class="mb-3 text-white">Say hello</h3>
-                  <p class="footer-text mb-0">+62 877 4464 8778</p>
-                  <p><a href="mailto:hello@company.co">bayuafriyadi5@gmail.com</a></p>
-                </div>
-
-                <ul class="social-links">
-                  
-                     <li><a href="#" class="uil uil-instagram" data-toggle="tooltip" data-placement="left" title="Instagram"></a></li>
-                     <li><a href="#" class="uil uil-facebook" data-toggle="tooltip" data-placement="left" title="Facebook"></a></li>
-                    
-                </ul>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-12">
-            <div class="contact-form">
-              <h2 class="mb-4">Interested to work together? Let's talk</h2>
-
-              <form action="" method="get">
-                <div class="row">
-                  <div class="col-lg-6 col-12">
-                    <input type="text" class="form-control" name="name" placeholder="Your Name" id="name">
-                  </div>
-
-                  <div class="col-lg-6 col-12">
-                    <input type="email" class="form-control" name="email" placeholder="Email" id="email">
-                  </div>
-
-                  <div class="col-12">
-                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Message"></textarea>
-                  </div>
-
-                  <div class="ml-lg-auto col-lg-5 col-12">
-                    <input type="submit" class="form-control submit-btn" value="Send Button">
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
+        <div class="tag-cloud" style="margin-top:0.75rem">
+          <span class="tag-pill">Playwright</span>
+          <span class="tag-pill">Appium</span>
+          <span class="tag-pill">Pytest</span>
+          <span class="tag-pill">TypeScript</span>
+          <span class="tag-pill">Python</span>
+          <span class="tag-pill">Postman</span>
+          <span class="tag-pill">Midtrans</span>
         </div>
       </div>
-    </section>
+      <div class="exp-item">
+        <div class="exp-meta">2020 — 2024 · Student</div>
+        <div class="exp-role">B.Eng, Informatics Engineering</div>
+        <div class="exp-co">UNIKOM — Universitas Komputer Indonesia</div>
+        <div class="cell-body" style="margin-top:0.75rem">
+          Studied software engineering fundamentals, algorithms, databases, and system design. Built the foundation that directly fuels a professional QA career.
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- FOOTER -->
-     <footer class="footer py-5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-lg-12 col-12">                                
-                        <p class="copyright-text text-center">Copyright &copy; Bayu Afriyadi</p>
-                    </div>
-                    
-               </div>
+  <!-- PROJECTS -->
+  <p class="section-label" id="projects">Projects</p>
+  <div class="bento fade-in">
+    <div class="cell cell-ink c-12">
+      <div class="cell-label">Selected work</div>
+      <div class="proj-list">
+        <div class="proj-item">
+          <div>
+            <div class="proj-name">yesdok-automation</div>
+            <div class="proj-sub">Unified monorepo · Playwright + Appium + Pytest · All 5 products</div>
           </div>
-     </footer>
+          <span class="proj-badge badge-active">Active</span>
+        </div>
+        <div class="proj-item">
+          <div>
+            <div class="proj-name">API Test Coverage Suite</div>
+            <div class="proj-sub">Auth, pagination, edge cases · server13.yesdok.com staging</div>
+          </div>
+          <span class="proj-badge badge-active">Active</span>
+        </div>
+        <div class="proj-item">
+          <div>
+            <div class="proj-name">QA Monitoring System</div>
+            <div class="proj-sub">Telegram real-time alerts · TradingView integration</div>
+          </div>
+          <span class="proj-badge badge-wip">Building</span>
+        </div>
+        <div class="proj-item">
+          <div>
+            <div class="proj-name">Mobile QA — Locum App</div>
+            <div class="proj-sub">Essex Bio Singapore · Doctor scheduling, shift mgmt & CME flows</div>
+          </div>
+          <span class="proj-badge badge-done">Done</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/Headroom.js"></script>
-    <script src="js/jQuery.headroom.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/custom.js"></script>
+</main>
 
-  </body>
+<footer>
+  Bayu Afriyadi · QA Engineer · 2026 · Built with intention
+</footer>
+
+<script>
+// Custom cursor
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+document.addEventListener('mousemove', e => {
+  cur.style.left = (e.clientX - 6) + 'px';
+  cur.style.top = (e.clientY - 6) + 'px';
+  ring.style.left = (e.clientX - 18) + 'px';
+  ring.style.top = (e.clientY - 18) + 'px';
+});
+document.querySelectorAll('a,button,.cell').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cur.style.transform = 'scale(2)';
+    ring.style.width = '48px';
+    ring.style.height = '48px';
+    ring.style.marginLeft = '-6px';
+    ring.style.marginTop = '-6px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cur.style.transform = 'scale(1)';
+    ring.style.width = '36px';
+    ring.style.height = '36px';
+    ring.style.marginLeft = '0';
+    ring.style.marginTop = '0';
+  });
+});
+
+// Scroll fade-in
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Smooth nav scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
 </html>
