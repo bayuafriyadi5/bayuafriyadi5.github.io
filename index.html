@@ -57,11 +57,17 @@ body{
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 3rem;height:56px;
+  height:56px;
   background:rgba(245,242,235,0.88);
   backdrop-filter:blur(16px);
   border-bottom:1.5px solid var(--ink);
+}
+.nav-inner{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 3rem;
+  height:100%;
+  display:flex;align-items:center;justify-content:space-between;
 }
 .nav-logo{
   font-family:var(--display);
@@ -89,8 +95,8 @@ nav{
 /* MAIN */
 main{
   width:100%;
-  max-width:100%;
-  margin:0;
+  max-width:1280px;
+  margin:0 auto;
   padding:56px 3rem 4rem;
 }
 
@@ -193,7 +199,7 @@ main{
   border-top:1.5px solid var(--ink);
   border-bottom:1.5px solid var(--ink);
   background:var(--lime);
-  margin:2rem 0;
+  margin:2rem -3rem;
 }
 .hero-strip-inner{
   display:flex;
@@ -387,14 +393,16 @@ footer{
 <div id="cursor-ring"></div>
 
 <nav>
-  <div class="nav-logo">BAYU.AF</div>
-  <div class="nav-links">
-    <a href="#about">about</a>
-    <a href="#skills">skills</a>
-    <a href="#experience">experience</a>
-    <a href="#projects">projects</a>
+  <div class="nav-inner">
+    <div class="nav-logo">BAYU.AF</div>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+    </div>
+    <div class="nav-badge">Open to work</div>
   </div>
-  <div class="nav-badge">Open to work</div>
 </nav>
 
 <main>
