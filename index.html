@@ -4,7 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bayu Afriyadi — QA Engineer</title>
-<meta name="description" content="Portfolio of Bayu Afriyadi — QA Engineer specializing in automation testing for healthtech products.">
+<meta name="description" content="QA Engineer with 1 year experience in automation testing for healthtech. Playwright, Appium, Pytest. Open to work.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%23c8f135'/%3E%3Ctext x='50' y='68' font-size='46' font-family='sans-serif' font-weight='900' text-anchor='middle' fill='%230d0d0d'%3EQA%3C/text%3E%3C/svg%3E">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Bayu Afriyadi — QA Engineer">
+<meta property="og:description" content="QA Engineer with 1 year experience in automation testing for healthtech. Playwright, Appium, Pytest. Open to work.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bayuafriyadi5.github.io">
+<meta property="og:image" content="https://github.com/bayuafriyadi5.png">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="400">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bayu Afriyadi — QA Engineer">
+<meta name="twitter:description" content="QA Engineer specializing in automation testing for healthtech. Open to work.">
+<meta name="twitter:image" content="https://github.com/bayuafriyadi5.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -57,26 +74,24 @@ body{
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  height:56px;
+  height:64px;
   background:rgba(245,242,235,0.88);
   backdrop-filter:blur(16px);
   border-bottom:1.5px solid var(--ink);
 }
 .nav-inner{
-  max-width:1280px;
-  margin:0 auto;
-  padding:0 3rem;
+  padding:0 4rem;
   height:100%;
   display:flex;align-items:center;justify-content:space-between;
 }
 .nav-logo{
   font-family:var(--display);
-  font-size:13px;font-weight:700;
+  font-size:16px;font-weight:700;
   letter-spacing:-0.02em;
 }
-.nav-links{display:flex;gap:2rem}
+.nav-links{display:flex;gap:2.5rem}
 .nav-links a{
-  font-size:12px;font-weight:500;
+  font-size:14px;font-weight:500;
   text-decoration:none;color:var(--ink);
   letter-spacing:0.02em;
   transition:color 0.2s;
@@ -85,40 +100,104 @@ nav{
 .nav-badge{
   background:var(--lime);
   color:var(--ink);
-  font-size:10px;font-weight:700;
-  padding:4px 10px;border-radius:20px;
+  font-size:12px;font-weight:700;
+  padding:6px 14px;border-radius:20px;
   border:1.5px solid var(--ink);
   font-family:var(--display);
   letter-spacing:0.02em;
+  text-decoration:none;
+  transition:opacity 0.2s;
 }
+.nav-badge:hover{opacity:0.75}
 
 /* MAIN */
 main{
   width:100%;
-  max-width:1280px;
-  margin:0 auto;
-  padding:56px 3rem 4rem;
+  padding:64px 4rem 4rem;
 }
 
 /* HERO */
 .hero{
-  padding:3rem 0 2rem;
+  min-height:calc(100vh - 64px);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:3rem 0 0;
+  background-image:radial-gradient(circle, rgba(13,13,13,0.07) 1.5px, transparent 1.5px);
+  background-size:32px 32px;
+  margin:0 -4rem;
+  padding-left:4rem;
+  padding-right:4rem;
   position:relative;
+  overflow:hidden;
+}
+.hero-bg-text{
+  position:absolute;
+  font-family:var(--display);
+  font-size:38vw;
+  font-weight:900;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(13,13,13,0.055);
+  letter-spacing:-0.05em;
+  line-height:0.85;
+  top:50%;
+  left:50%;
+  transform:translate(-46%,-50%);
+  user-select:none;
+  pointer-events:none;
+  white-space:nowrap;
+  z-index:0;
+}
+.hero-grid{z-index:1}
+.hero-scroll{z-index:1}
+
+.hero-tag{
+  position:absolute;
+  border:1.5px solid var(--ink);
+  border-radius:12px;
+  padding:14px 18px;
+  background:rgba(245,242,235,0.85);
+  backdrop-filter:blur(8px);
+  z-index:2;
+}
+.hero-tag-label{
+  font-size:9px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:#999;margin-bottom:4px;
+}
+.hero-tag-value{
+  font-family:var(--display);
+  font-size:13px;font-weight:700;
+  letter-spacing:-0.01em;
+}
+.hero-tag-dot{
+  display:inline-block;
+  width:7px;height:7px;
+  background:var(--lime);
+  border-radius:50%;
+  border:1.5px solid var(--ink);
+  margin-right:6px;
+  animation:pulse 2s ease-in-out infinite;
+}
+.hero-tag-tr{top:2.5rem;right:4rem;}
+.hero-tag-bl{bottom:5.5rem;left:4rem;}
+.hero-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  align-items:end;
-  gap:2rem;
+  align-items:center;
+  gap:3rem;
+  flex:1;
+  padding-bottom:3rem;
 }
 .hero-left{}
 .hero-right{
   display:flex;
   flex-direction:column;
-  justify-content:flex-end;
-  padding-bottom:0.5rem;
+  justify-content:center;
   gap:1.5rem;
 }
 .hero-tagline{
-  font-size:clamp(1.1rem,2vw,1.5rem);
+  font-size:clamp(1.3rem,2.2vw,2rem);
   font-family:var(--body);
   font-weight:300;
   color:#444;
@@ -127,59 +206,120 @@ main{
   max-width:38ch;
 }
 .hero-meta{
-  display:flex;gap:2rem;
+  display:flex;gap:3rem;
 }
 .hero-meta-item{
   display:flex;flex-direction:column;gap:2px;
 }
 .hero-meta-label{
-  font-size:9px;font-weight:700;
+  font-size:12px;font-weight:700;
   letter-spacing:0.12em;
   text-transform:uppercase;
   color:#999;
 }
 .hero-meta-value{
   font-family:var(--display);
-  font-size:1.6rem;font-weight:900;
+  font-size:3.2rem;font-weight:900;
   letter-spacing:-0.03em;
   color:var(--ink);
 }
 .hero-meta-unit{
-  font-size:0.75rem;font-weight:400;
+  font-size:1.2rem;font-weight:400;
   font-family:var(--body);
   color:#666;
 }
 .hero-cta{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;gap:10px;
   background:var(--ink);color:var(--white);
-  font-family:var(--display);font-size:11px;font-weight:700;
+  font-family:var(--display);font-size:15px;font-weight:700;
   letter-spacing:0.04em;text-transform:uppercase;
-  padding:10px 20px;border-radius:2px;
+  padding:18px 36px;border-radius:2px;
   text-decoration:none;
   align-self:flex-start;
   transition:background 0.2s,color 0.2s;
 }
 .hero-cta:hover{background:var(--lime);color:var(--ink)}
+.hero-cta-cv{
+  display:inline-flex;align-items:center;gap:10px;
+  background:transparent;color:var(--ink);
+  font-family:var(--display);font-size:15px;font-weight:700;
+  letter-spacing:0.04em;text-transform:uppercase;
+  padding:17px 36px;border-radius:2px;
+  border:1.5px solid var(--ink);
+  text-decoration:none;
+  align-self:flex-start;
+  transition:background 0.2s,color 0.2s;
+}
+.hero-cta-cv:hover{background:var(--ink);color:var(--white)}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+
+.hero-chips{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-top:0.75rem;
+}
+.hero-links{
+  display:flex;gap:12px;
+  margin-top:1.25rem;
+}
+.hero-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1.5px solid var(--ink);
+  padding-bottom:2px;
+  transition:color 0.2s,border-color 0.2s;
+}
+.hero-link:hover{color:var(--pink);border-color:var(--pink)}
+.hero-chip{
+  font-size:14px;font-weight:500;
+  padding:9px 18px;
+  border-radius:24px;
+  border:1.5px solid rgba(13,13,13,0.25);
+  background:rgba(245,242,235,0.7);
+  backdrop-filter:blur(4px);
+  letter-spacing:0.01em;
+  color:#555;
+}
+
+.hero-scroll{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  padding:1.5rem 0;
+  font-size:10px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:#aaa;
+}
+.hero-scroll-line{
+  width:1px;height:36px;
+  background:linear-gradient(to bottom,#aaa,transparent);
+  animation:scrollDrop 1.8s ease-in-out infinite;
+}
+@keyframes scrollDrop{
+  0%{transform:scaleY(0);transform-origin:top;opacity:1}
+  50%{transform:scaleY(1);transform-origin:top;opacity:1}
+  100%{transform:scaleY(1);transform-origin:bottom;opacity:0}
+}
 .hero-eyebrow{
-  display:flex;align-items:center;gap:10px;
-  font-size:11px;font-weight:500;
-  letter-spacing:0.12em;
+  display:flex;align-items:center;gap:12px;
+  font-size:15px;font-weight:500;
+  letter-spacing:0.1em;
   color:var(--ink);
   margin-bottom:1.5rem;
   text-transform:uppercase;
 }
 .hero-dot{
-  width:8px;height:8px;
+  width:12px;height:12px;
   background:var(--lime);
   border-radius:50%;
-  border:1.5px solid var(--ink);
+  border:2px solid var(--ink);
   animation:pulse 2s ease-in-out infinite;
+  flex-shrink:0;
 }
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
 
 .hero-name{
   font-family:var(--display);
-  font-size:clamp(3.5rem,9vw,7rem);
+  font-size:clamp(4rem,11vw,10rem);
   font-weight:900;
   line-height:0.92;
   letter-spacing:-0.04em;
@@ -199,7 +339,7 @@ main{
   border-top:1.5px solid var(--ink);
   border-bottom:1.5px solid var(--ink);
   background:var(--lime);
-  margin:2rem -3rem;
+  margin:0 -4rem;
 }
 .hero-strip-inner{
   display:flex;
@@ -209,8 +349,8 @@ main{
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .strip-item{
   font-family:var(--display);
-  font-size:12px;font-weight:700;
-  padding:8px 24px;
+  font-size:13px;font-weight:700;
+  padding:10px 28px;
   letter-spacing:0.04em;
   color:var(--ink);
   border-right:1.5px solid var(--ink);
@@ -220,22 +360,29 @@ main{
 .bento{
   display:grid;
   grid-template-columns:repeat(12,1fr);
-  gap:12px;
+  gap:16px;
   margin:2rem 0;
 }
 
 .cell{
   background:var(--white);
   border:1.5px solid var(--ink);
-  border-radius:16px;
-  padding:1.5rem;
+  border-radius:20px;
+  padding:2rem;
   position:relative;
   overflow:hidden;
-  transition:transform 0.2s ease, box-shadow 0.2s ease;
+  opacity:0;
+  transform:translateY(56px) scale(0.96);
+  transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1) var(--reveal-delay,0ms),
+             transform 0.85s cubic-bezier(0.16,1,0.3,1) var(--reveal-delay,0ms),
+             box-shadow 0.2s ease;
+}
+.cell.visible{
+  opacity:1;
+  transform:none;
 }
 .cell:hover{
-  transform:translate(-2px,-2px);
-  box-shadow:4px 4px 0 var(--ink);
+  box-shadow:5px 5px 0 var(--ink);
 }
 
 .c-2{grid-column:span 2}
@@ -257,39 +404,39 @@ main{
 .cell-sky{background:var(--sky)}
 
 .cell-label{
-  font-size:10px;font-weight:700;
+  font-size:11px;font-weight:700;
   letter-spacing:0.12em;
   text-transform:uppercase;
   opacity:0.5;
-  margin-bottom:0.75rem;
+  margin-bottom:1rem;
 }
 .cell-title{
   font-family:var(--display);
   font-weight:700;
-  font-size:1rem;
+  font-size:1.4rem;
   line-height:1.2;
-  margin-bottom:0.5rem;
+  margin-bottom:0.75rem;
   letter-spacing:-0.02em;
 }
 .cell-body{
-  font-size:12px;
-  line-height:1.7;
+  font-size:13px;
+  line-height:1.75;
   opacity:0.85;
 }
 
 .stat-big{
   font-family:var(--display);
-  font-size:4rem;
+  font-size:5rem;
   font-weight:900;
   line-height:1;
   letter-spacing:-0.04em;
 }
-.stat-unit{font-size:1.5rem}
+.stat-unit{font-size:1.8rem}
 
-.tag-cloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.75rem}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}
 .tag-pill{
-  font-size:11px;font-weight:500;
-  padding:4px 12px;
+  font-size:12px;font-weight:500;
+  padding:5px 14px;
   border-radius:20px;
   border:1.5px solid currentColor;
   white-space:nowrap;
@@ -301,36 +448,37 @@ main{
 .cell .tag-pill{border-color:rgba(0,0,0,0.4);color:#0d0d0d;font-weight:600;background:rgba(0,0,0,0.05)}
 
 .exp-item{
-  padding:0.75rem 0;
+  padding:1.25rem 0;
   border-bottom:1px solid rgba(0,0,0,0.08);
 }
 .exp-item:last-child{border-bottom:none;padding-bottom:0}
 .exp-item:first-child{padding-top:0}
 .exp-meta{
-  font-size:10px;font-weight:600;
+  font-size:11px;font-weight:600;
   letter-spacing:0.08em;text-transform:uppercase;
-  opacity:0.45;margin-bottom:3px;
+  opacity:0.45;margin-bottom:6px;
 }
 .exp-role{
   font-family:var(--display);
-  font-size:13px;font-weight:700;
-  letter-spacing:-0.01em;
+  font-size:1.4rem;font-weight:700;
+  letter-spacing:-0.02em;
+  line-height:1.2;
 }
-.exp-co{font-size:11px;opacity:0.6;margin-top:2px}
+.exp-co{font-size:14px;opacity:0.6;margin-top:4px}
 
-.proj-list{display:flex;flex-direction:column;gap:8px;margin-top:0.5rem}
+.proj-list{display:flex;flex-direction:column;gap:10px;margin-top:0.75rem}
 .proj-item{
   background:rgba(255,255,255,0.07);
-  border-radius:8px;
-  padding:10px 12px;
+  border-radius:12px;
+  padding:18px 20px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.proj-name{font-size:12px;font-weight:500}
-.proj-sub{font-size:11px;opacity:0.5;margin-top:2px}
+.proj-name{font-size:16px;font-weight:600}
+.proj-sub{font-size:13px;opacity:0.5;margin-top:4px}
 .proj-badge{
-  font-size:9px;font-weight:700;letter-spacing:0.06em;
-  padding:2px 8px;border-radius:10px;
-  text-transform:uppercase;white-space:nowrap;margin-left:8px;
+  font-size:11px;font-weight:700;letter-spacing:0.06em;
+  padding:4px 12px;border-radius:10px;
+  text-transform:uppercase;white-space:nowrap;margin-left:12px;
 }
 .badge-active{background:var(--lime);color:var(--ink)}
 .badge-wip{background:var(--orange);color:var(--white)}
@@ -346,44 +494,172 @@ main{
 }
 
 .avail-pill{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;gap:10px;
   background:var(--lime);
   border:1.5px solid var(--ink);
   border-radius:30px;
-  padding:8px 18px;
-  font-size:11px;font-weight:700;
+  padding:12px 24px;
+  font-size:13px;font-weight:700;
   letter-spacing:0.06em;text-transform:uppercase;
 }
 .avail-dot{
-  width:7px;height:7px;background:var(--ink);
+  width:9px;height:9px;background:var(--ink);
   border-radius:50%;animation:pulse 1.5s ease-in-out infinite;
+}
+
+/* ── Hero entrance – transition-based, bidirectional ── */
+.hero-eyebrow,.hero-tagline,.hero-meta,.hero-ctas,.hero-chips,.hero-links,.hero-scroll,.hero-strip{
+  opacity:0;transform:translateY(32px);
+  transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+             transform 0.85s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-name{
+  opacity:0;clip-path:inset(0 100% 0 0);
+  transition:clip-path 1.2s cubic-bezier(0.16,1,0.3,1),opacity 0.1s ease;
+}
+.hero-tag{
+  opacity:0;transform:scale(0.93) translateY(10px);
+  transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+             transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-bg-text{opacity:0;transition:opacity 2s ease}
+
+/* ── hero-in state – delays stagger in ── */
+.hero.hero-in .hero-eyebrow{opacity:1;transform:none;transition-delay:0.1s}
+.hero.hero-in .hero-name{opacity:1;clip-path:inset(0 0% 0 0);transition-delay:0.28s}
+.hero.hero-in .hero-tagline{opacity:1;transform:none;transition-delay:0.65s}
+.hero.hero-in .hero-meta{opacity:1;transform:none;transition-delay:0.8s}
+.hero.hero-in .hero-ctas{opacity:1;transform:none;transition-delay:0.95s}
+.hero.hero-in .hero-chips{opacity:1;transform:none;transition-delay:1.05s}
+.hero.hero-in .hero-links{opacity:1;transform:none;transition-delay:1.15s}
+.hero.hero-in .hero-tag-tr{opacity:1;transform:none;transition-delay:1.2s}
+.hero.hero-in .hero-tag-bl{opacity:1;transform:none;transition-delay:1.35s}
+.hero.hero-in .hero-bg-text{opacity:1;transition-delay:0.3s}
+.hero.hero-in .hero-scroll{opacity:1;transform:none;transition-delay:1.4s}
+.hero.hero-in .hero-strip{opacity:1;transform:none;transition-delay:1.5s}
+
+/* ── exit – no stagger, all disappear together ── */
+.hero.hero-out .hero-eyebrow,.hero.hero-out .hero-tagline,.hero.hero-out .hero-meta,
+.hero.hero-out .hero-ctas,.hero.hero-out .hero-chips,.hero.hero-out .hero-links,
+.hero.hero-out .hero-scroll,.hero.hero-out .hero-strip,
+.hero.hero-out .hero-name,.hero.hero-out .hero-tag,.hero.hero-out .hero-bg-text{
+  transition-delay:0ms!important;
+  transition-duration:0.35s!important;
 }
 
 .section-label{
   font-family:var(--display);
-  font-size:10px;font-weight:700;
+  font-size:11px;font-weight:700;
   letter-spacing:0.14em;text-transform:uppercase;
   color:#999;
-  margin:3rem 0 0.5rem;
+  margin:4rem 0 0.75rem;
 }
 
-.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
-.fade-in.show{opacity:1;transform:translateY(0)}
 
 footer{
   border-top:1.5px solid var(--ink);
-  padding:1.5rem;text-align:center;
-  font-size:11px;letter-spacing:0.04em;
+  padding:2rem 4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;letter-spacing:0.04em;
   font-weight:500;color:#888;
+}
+/* CONTACT */
+.contact-wrap{margin:1rem 0 3rem}
+.contact-card{
+  background:var(--ink);color:var(--white);
+  border:1.5px solid var(--ink);border-radius:20px;
+  padding:3rem;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;
+}
+.contact-headline{
+  font-family:var(--display);
+  font-size:clamp(2rem,4vw,3.5rem);font-weight:900;
+  letter-spacing:-0.04em;line-height:1.05;
+  margin:0.75rem 0 1rem;
+}
+.contact-sub{font-size:14px;line-height:1.7;opacity:0.6;max-width:36ch}
+.contact-right{
+  display:flex;flex-direction:column;gap:0;
+  min-width:300px;flex-shrink:0;
+}
+.contact-link{
+  display:flex;align-items:center;justify-content:space-between;
+  text-decoration:none;color:var(--white);
+  padding:1rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.12);
+  transition:opacity 0.2s;
+}
+.contact-link:hover{opacity:0.7}
+.contact-link-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.45}
+.contact-link-value{font-size:14px;font-weight:500}
+.contact-cv{
+  display:inline-flex;align-items:center;
+  margin-top:1.5rem;
+  background:var(--lime);color:var(--ink);
+  font-family:var(--display);font-size:13px;font-weight:700;
+  letter-spacing:0.04em;text-transform:uppercase;
+  padding:14px 28px;border-radius:2px;
+  text-decoration:none;align-self:flex-start;
+  transition:opacity 0.2s;
+}
+.contact-cv:hover{opacity:0.85}
+
+.footer-links{display:flex;gap:1.5rem}
+.footer-link{
+  color:#888;text-decoration:none;
+  transition:color 0.2s;
+}
+.footer-link:hover{color:var(--ink)}
+
+.hamburger{
+  display:none;
+  flex-direction:column;gap:5px;
+  background:none;border:none;cursor:none;
+  padding:4px;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--ink);
+  transition:transform 0.25s ease, opacity 0.25s ease;
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.mobile-menu{
+  display:none;
+  position:fixed;top:64px;left:0;right:0;
+  background:rgba(245,242,235,0.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1.5px solid var(--ink);
+  padding:1.5rem 2rem;
+  flex-direction:column;gap:1.25rem;
+  z-index:99;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  font-size:16px;font-weight:500;
+  text-decoration:none;color:var(--ink);
+  letter-spacing:0.02em;
 }
 
 @media(max-width:700px){
   .c-2,.c-3,.c-4,.c-5,.c-6,.c-7,.c-8,.c-9{grid-column:span 12}
   .r-2{grid-row:span 1}
   .stat-big{font-size:3rem}
-  .hero{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:1fr}
   .hero-name{font-size:clamp(2.8rem,12vw,5rem)}
   .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-tag{display:none}
+  .nav-cv-link{display:none}
+  main{padding:64px 1.5rem 3rem}
+  .hero{margin:0 -1.5rem;padding-left:1.5rem;padding-right:1.5rem}
+  .hero-strip{margin:0 -1.5rem}
+  .contact-card{flex-direction:column;gap:2rem}
+  .contact-right{min-width:unset;width:100%}
+  footer{padding:1.5rem;flex-direction:column;gap:1rem;text-align:center}
+  .footer-links{justify-content:center;flex-wrap:wrap}
 }
 </style>
 </head>
@@ -401,82 +677,124 @@ footer{
       <a href="#experience">experience</a>
       <a href="#projects">projects</a>
     </div>
-    <div class="nav-badge">Open to work</div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener" class="nav-cv-link" style="font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:0.02em;border-bottom:1.5px solid var(--ink);padding-bottom:1px">CV ↓</a>
+      <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="nav-badge">Open to work</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener">Download CV ↓</a>
+  <a href="mailto:bayuafriyadi5@gmail.com">bayuafriyadi5@gmail.com</a>
+</div>
 
 <main>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-left">
-      <div class="hero-eyebrow">
-        <div class="hero-dot"></div>
-        QA Engineer · Bogor, ID · Healthtech
-      </div>
-      <h1 class="hero-name">
-        BAYU
-        <span class="line2">AFRIYADI</span>
-      </h1>
+    <div class="hero-bg-text">QA</div>
+    <div class="hero-tag hero-tag-tr">
+      <div class="hero-tag-label">Current role</div>
+      <div class="hero-tag-value"><span class="hero-tag-dot"></span>QA Engineer @ Yesdok</div>
     </div>
-    <div class="hero-right">
-      <p class="hero-tagline">Making software worthy of trust, one test at a time.</p>
-      <div class="hero-meta">
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Experience</span>
-          <span class="hero-meta-value">10<span class="hero-meta-unit">mo+</span></span>
+    <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="hero-tag hero-tag-bl" style="text-decoration:none;color:inherit">
+      <div class="hero-tag-label">Looking for</div>
+      <div class="hero-tag-value">QA / Lead QA · Full-time</div>
+    </a>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <div class="hero-dot"></div>
+          QA Engineer · Bogor, ID · Healthtech
         </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Products</span>
-          <span class="hero-meta-value">5</span>
+        <h1 class="hero-name">
+          BAYU
+          <span class="line2">AFRIYADI</span>
+        </h1>
+      </div>
+      <div class="hero-right">
+        <p class="hero-tagline">Making software worthy of trust, one test at a time.</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Experience</span>
+            <span class="hero-meta-value">1<span class="hero-meta-unit">yr</span></span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Products</span>
+            <span class="hero-meta-value">5</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Stacks</span>
+            <span class="hero-meta-value">3</span>
+          </div>
         </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Stacks</span>
-          <span class="hero-meta-value">3</span>
+        <div class="hero-ctas">
+          <a href="#about" class="hero-cta">View My Work →</a>
+          <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener" class="hero-cta-cv">Download CV ↓</a>
+        </div>
+        <div class="hero-chips">
+          <span class="hero-chip">Bogor, Indonesia</span>
+          <span class="hero-chip">Remote friendly</span>
+          <span class="hero-chip">Healthtech focused</span>
+          <span class="hero-chip">Jun 2024 - Present</span>
         </div>
       </div>
-      <a href="#about" class="hero-cta">View My Work →</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      scroll
+    </div>
+    <div class="hero-strip">
+      <div class="hero-strip-inner">
+        <span class="strip-item">PLAYWRIGHT</span>
+        <span class="strip-item">APPIUM</span>
+        <span class="strip-item">PYTEST</span>
+        <span class="strip-item">TYPESCRIPT</span>
+        <span class="strip-item">PYTHON</span>
+        <span class="strip-item">API TESTING</span>
+        <span class="strip-item">MOBILE QA</span>
+        <span class="strip-item">HEALTHTECH</span>
+        <span class="strip-item">PLAYWRIGHT</span>
+        <span class="strip-item">APPIUM</span>
+        <span class="strip-item">PYTEST</span>
+        <span class="strip-item">TYPESCRIPT</span>
+        <span class="strip-item">PYTHON</span>
+        <span class="strip-item">API TESTING</span>
+        <span class="strip-item">MOBILE QA</span>
+        <span class="strip-item">HEALTHTECH</span>
+      </div>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="hero-strip">
-    <div class="hero-strip-inner">
-      <span class="strip-item">PLAYWRIGHT</span>
-      <span class="strip-item">APPIUM</span>
-      <span class="strip-item">PYTEST</span>
-      <span class="strip-item">TYPESCRIPT</span>
-      <span class="strip-item">PYTHON</span>
-      <span class="strip-item">API TESTING</span>
-      <span class="strip-item">MOBILE QA</span>
-      <span class="strip-item">HEALTHTECH</span>
-      <span class="strip-item">PLAYWRIGHT</span>
-      <span class="strip-item">APPIUM</span>
-      <span class="strip-item">PYTEST</span>
-      <span class="strip-item">TYPESCRIPT</span>
-      <span class="strip-item">PYTHON</span>
-      <span class="strip-item">API TESTING</span>
-      <span class="strip-item">MOBILE QA</span>
-      <span class="strip-item">HEALTHTECH</span>
-    </div>
-  </div>
-
   <!-- ABOUT -->
   <p class="section-label" id="about">About</p>
-  <div class="bento fade-in">
+  <div class="bento">
     <div class="cell cell-ink c-7 r-2">
       <div class="cell-label">Who I am</div>
-      <div style="font-family:var(--display);font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;line-height:1.3;margin-bottom:1rem">
+      <div style="font-family:var(--display);font-size:2rem;font-weight:700;letter-spacing:-0.03em;line-height:1.3;margin-bottom:1.25rem">
         Fresh grad. Solo QA. Five products. Zero hand-holding.
       </div>
       <div class="cell-body" style="opacity:0.7">
-        I jumped straight from UNIKOM's Informatics Engineering into owning quality end-to-end at Yesdok — a healthtech startup with web panels, mobile apps, and live payment flows. No senior QA to shadow. Just me, my frameworks, and a lot of bugs to find before users do.
+        I jumped straight from UNIKOM's Informatics Engineering into owning quality end-to-end at Yesdok, a healthtech startup with web panels, mobile apps, and live payment flows. No senior QA to shadow. Just me, my frameworks, and a lot of bugs to find before users do.
+      </div>
+      <div class="cell-body" style="opacity:0.7;margin-top:1rem">
+        I built the entire automation stack from scratch: Playwright for web, Appium for mobile, Pytest for API. In healthtech, bugs aren't just inconvenient. They affect real patients and doctors. That weight keeps me precise.
+      </div>
+      <div class="cell-body" style="opacity:0.7;margin-top:1rem">
+        Outside of work I'm obsessed with how systems fail. Reading post-mortems, reverse-engineering edge cases, thinking about what "good enough" actually means when a doctor is mid-consultation.
       </div>
       <div class="overflow-text">QA</div>
     </div>
     <div class="cell cell-lime c-5">
       <div class="cell-label">Experience</div>
-      <div class="stat-big">10<span class="stat-unit">mo+</span></div>
+      <div class="stat-big">1<span class="stat-unit">yr</span></div>
       <div class="cell-body" style="margin-top:0.5rem">Professional QA at healthtech startup</div>
     </div>
     <div class="cell cell-blue c-3">
@@ -490,19 +808,19 @@ footer{
       <div class="cell-body" style="margin-top:0.5rem;color:rgba(255,255,255,0.7)">Web · Mobile · API</div>
     </div>
     <div class="cell cell-sky c-5" style="display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;gap:12px">
-      <div class="avail-pill"><div class="avail-dot"></div>Open to work</div>
+      <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="avail-pill" style="text-decoration:none;color:inherit"><div class="avail-dot"></div>Open to work</a>
       <div class="cell-body">Looking for QA / Lead QA opportunities</div>
     </div>
     <div class="cell c-7">
       <div class="cell-label">Education</div>
       <div class="cell-title">Informatics Engineering</div>
-      <div class="cell-body">UNIKOM — Universitas Komputer Indonesia · Class of 2024</div>
+      <div class="cell-body">UNIKOM (Universitas Komputer Indonesia) · Class of 2024</div>
     </div>
   </div>
 
   <!-- SKILLS -->
   <p class="section-label" id="skills">Skills</p>
-  <div class="bento fade-in">
+  <div class="bento">
     <div class="cell cell-blue c-6">
       <div class="cell-label">Web Automation</div>
       <div class="cell-title">Browser Testing</div>
@@ -555,15 +873,15 @@ footer{
 
   <!-- EXPERIENCE -->
   <p class="section-label" id="experience">Experience</p>
-  <div class="bento fade-in">
+  <div class="bento">
     <div class="cell c-12">
       <div class="cell-label">Work history</div>
       <div class="exp-item">
-        <div class="exp-meta">Jun 2024 — Present · Full-time</div>
+        <div class="exp-meta">Jun 2024 - Present · Full-time</div>
         <div class="exp-role">QA Engineer</div>
-        <div class="exp-co">Yesdok Healthtech — Sole QA, 5 products end-to-end</div>
+        <div class="exp-co">Yesdok Healthtech · Sole QA, 5 products end-to-end</div>
         <div class="cell-body" style="margin-top:0.75rem">
-          Responsible for quality across Panel Dokter Spesialis, Panel Dokter 24 Jam (web), Yesdok App, Yesdok for Doctor, and Locum (mobile, Essex Bio Singapore partnership). Built the entire automation framework from scratch — Playwright for web, Appium for mobile, Pytest for API. Investigated high-severity bugs including PHP memory exhaustion on the chat history endpoint caused by missing pagination.
+          Responsible for quality across Panel Dokter Spesialis, Panel Dokter 24 Jam (web), Yesdok App, Yesdok for Doctor, and Locum (mobile, Essex Bio Singapore partnership). Built the entire automation framework from scratch: Playwright for web, Appium for mobile, Pytest for API. Investigated high-severity bugs including PHP memory exhaustion on the chat history endpoint caused by missing pagination.
         </div>
         <div class="tag-cloud" style="margin-top:0.75rem">
           <span class="tag-pill">Playwright</span>
@@ -576,9 +894,9 @@ footer{
         </div>
       </div>
       <div class="exp-item">
-        <div class="exp-meta">2020 — 2024 · Student</div>
+        <div class="exp-meta">2020 - 2024 · Student</div>
         <div class="exp-role">B.Eng, Informatics Engineering</div>
-        <div class="exp-co">UNIKOM — Universitas Komputer Indonesia</div>
+        <div class="exp-co">UNIKOM (Universitas Komputer Indonesia)</div>
         <div class="cell-body" style="margin-top:0.75rem">
           Studied software engineering fundamentals, algorithms, databases, and system design. Built the foundation that directly fuels a professional QA career.
         </div>
@@ -588,7 +906,7 @@ footer{
 
   <!-- PROJECTS -->
   <p class="section-label" id="projects">Projects</p>
-  <div class="bento fade-in">
+  <div class="bento">
     <div class="cell cell-ink c-12">
       <div class="cell-label">Selected work</div>
       <div class="proj-list">
@@ -615,7 +933,7 @@ footer{
         </div>
         <div class="proj-item">
           <div>
-            <div class="proj-name">Mobile QA — Locum App</div>
+            <div class="proj-name">Mobile QA: Locum App</div>
             <div class="proj-sub">Essex Bio Singapore · Doctor scheduling, shift mgmt & CME flows</div>
           </div>
           <span class="proj-badge badge-done">Done</span>
@@ -624,10 +942,42 @@ footer{
     </div>
   </div>
 
+  <!-- CONTACT -->
+  <p class="section-label" id="contact">Contact</p>
+  <div class="contact-wrap">
+    <div class="contact-card cell-ink">
+      <div class="contact-left">
+        <div class="cell-label" style="opacity:0.45;color:#fff">Open to opportunities</div>
+        <div class="contact-headline">Let's work<br>together.</div>
+        <p class="contact-sub">QA Engineer looking for full-time or contract roles in healthtech, fintech, or any product where quality actually matters.</p>
+      </div>
+      <div class="contact-right">
+        <a href="mailto:bayuafriyadi5@gmail.com" class="contact-link">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">bayuafriyadi5@gmail.com ↗</span>
+        </a>
+        <a href="https://github.com/bayuafriyadi5" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-value">github.com/bayuafriyadi5 ↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-value">bayu-afriyadi ↗</span>
+        </a>
+        <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener" class="contact-cv">Download CV ↓</a>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
-  Bayu Afriyadi · QA Engineer · 2026 · Built with intention
+  <span>Bayu Afriyadi · QA Engineer · 2026</span>
+  <div class="footer-links">
+    <a href="mailto:bayuafriyadi5@gmail.com" class="footer-link">bayuafriyadi5@gmail.com</a>
+    <a href="https://github.com/bayuafriyadi5" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+  </div>
 </footer>
 
 <script>
@@ -657,11 +1007,55 @@ document.querySelectorAll('a,button,.cell').forEach(el => {
   });
 });
 
-// Scroll fade-in
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+// Staggered cell reveal – bidirectional
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const cell = entry.target;
+    const bento = cell.closest('.bento');
+    const siblings = bento ? [...bento.querySelectorAll('.cell')] : [cell];
+    const idx = siblings.indexOf(cell);
+    if (entry.isIntersecting) {
+      cell.style.setProperty('--reveal-delay', (idx * 100) + 'ms');
+      cell.classList.add('visible');
+    } else {
+      cell.style.setProperty('--reveal-delay', '0ms');
+      cell.classList.remove('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.cell').forEach(el => revealObserver.observe(el));
+
+// Hero entrance – bidirectional
+const heroEl = document.querySelector('.hero');
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      heroEl.classList.remove('hero-out');
+      heroEl.classList.add('hero-in');
+    } else {
+      heroEl.classList.remove('hero-in');
+      heroEl.classList.add('hero-out');
+      // strip out-class after exit transition so next entry is clean
+      setTimeout(() => heroEl.classList.remove('hero-out'), 400);
+    }
+  });
+}, { threshold: 0.05 });
+heroObserver.observe(heroEl);
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger?.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu?.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
 
 // Smooth nav scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
