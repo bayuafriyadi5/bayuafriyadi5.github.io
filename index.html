@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bayu Afriyadi — QA Engineer</title>
 <meta name="description" content="QA Engineer with 1 year experience in automation testing for healthtech. Playwright, Appium, Pytest. Open to work.">
+<meta name="theme-color" content="#1F4FFF">
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%23c8f135'/%3E%3Ctext x='50' y='68' font-size='46' font-family='sans-serif' font-weight='900' text-anchor='middle' fill='%230d0d0d'%3EQA%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231F4FFF'/%3E%3Cpath d='M28 52l14 14 30-32' fill='none' stroke='white' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Bayu Afriyadi — QA Engineer">
@@ -22,665 +23,396 @@
 <meta name="twitter:description" content="QA Engineer specializing in automation testing for healthtech. Open to work.">
 <meta name="twitter:image" content="https://github.com/bayuafriyadi5.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#0d0d0d;
-  --paper:#f5f2eb;
-  --paper2:#ede9df;
-  --lime:#c8f135;
-  --pink:#ff3b8b;
-  --blue:#1e5cff;
-  --orange:#ff6b1a;
-  --sky:#a8d8ff;
-  --violet:#8b5cf6;
-  --white:#ffffff;
-  --display:'Unbounded',sans-serif;
-  --body:'DM Sans',sans-serif;
+  --bg:#F4F7FD;
+  --surface:#FFFFFF;
+  --navy:#0A1F44;
+  --navy-2:#3A4D72;
+  --cobalt:#1F4FFF;
+  --cobalt-deep:#1236C9;
+  --sky:#8EC5FF;
+  --pale:#E3ECFF;
+  --line:#D5E0F5;
+  --pass:#16A36A;
+  --fail:#E5484D;
+  --display:'Bricolage Grotesque',sans-serif;
+  --body:'Instrument Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --wrap:1180px;
+  --gutter:clamp(16px,4vw,48px);
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{
-  background:var(--paper);
-  color:var(--ink);
+  background:var(--bg);
+  color:var(--navy);
   font-family:var(--body);
-  font-size:15px;
-  line-height:1.5;
+  font-size:16px;
+  line-height:1.6;
   overflow-x:hidden;
-  cursor:none;
+  -webkit-font-smoothing:antialiased;
 }
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
 
-/* custom cursor */
-#cursor{
-  width:12px;height:12px;
-  background:var(--pink);
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  z-index:9999;
-  transition:transform 0.1s ease;
-  mix-blend-mode:multiply;
-}
-#cursor-ring{
-  width:36px;height:36px;
-  border:1.5px solid var(--ink);
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  z-index:9998;
-  transition:left 0.12s ease,top 0.12s ease,width 0.2s,height 0.2s;
+/* scroll progress */
+#progress{
+  position:fixed;top:0;left:0;height:3px;width:100%;
+  background:var(--cobalt);transform-origin:0 50%;transform:scaleX(0);
+  z-index:200;
 }
 
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  height:64px;
-  background:rgba(245,242,235,0.88);
-  backdrop-filter:blur(16px);
-  border-bottom:1.5px solid var(--ink);
+  background:rgba(244,247,253,0.82);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s;
 }
-.nav-inner{
-  padding:0 4rem;
-  height:100%;
-  display:flex;align-items:center;justify-content:space-between;
-}
+nav.scrolled{border-bottom-color:var(--line)}
+.nav-inner{height:68px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .nav-logo{
-  font-family:var(--display);
-  font-size:16px;font-weight:700;
-  letter-spacing:-0.02em;
+  font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-0.02em;
+  text-decoration:none;display:flex;align-items:center;gap:10px;
 }
-.nav-links{display:flex;gap:2.5rem}
+.nav-logo-mark{
+  width:28px;height:28px;border-radius:8px;background:var(--cobalt);
+  display:grid;place-items:center;
+}
+.nav-links{display:flex;gap:2rem}
 .nav-links a{
-  font-size:14px;font-weight:500;
-  text-decoration:none;color:var(--ink);
-  letter-spacing:0.02em;
-  transition:color 0.2s;
+  font-size:15px;font-weight:500;text-decoration:none;color:var(--navy-2);
+  position:relative;padding:4px 0;transition:color .2s;
 }
-.nav-links a:hover{color:var(--pink)}
-.nav-badge{
-  background:var(--lime);
-  color:var(--ink);
-  font-size:12px;font-weight:700;
-  padding:6px 14px;border-radius:20px;
-  border:1.5px solid var(--ink);
-  font-family:var(--display);
-  letter-spacing:0.02em;
-  text-decoration:none;
-  transition:opacity 0.2s;
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--cobalt);
+  transform:scaleX(0);transform-origin:left;transition:transform .25s;
 }
-.nav-badge:hover{opacity:0.75}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.status-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:600;text-decoration:none;
+  padding:8px 16px;border-radius:999px;
+  background:var(--pale);color:var(--cobalt-deep);
+  transition:background .2s,color .2s;
+}
+.status-pill:hover{background:var(--cobalt);color:#fff}
+.live-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--pass);
+  box-shadow:0 0 0 0 rgba(22,163,106,.5);animation:ping 2s infinite;
+}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(22,163,106,.5)}80%,100%{box-shadow:0 0 0 8px rgba(22,163,106,0)}}
 
-/* MAIN */
-main{
-  width:100%;
-  padding:64px 4rem 4rem;
-}
-
-/* HERO */
-.hero{
-  min-height:calc(100vh - 64px);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  padding:3rem 0 0;
-  background-image:radial-gradient(circle, rgba(13,13,13,0.07) 1.5px, transparent 1.5px);
-  background-size:32px 32px;
-  margin:0 -4rem;
-  padding-left:4rem;
-  padding-right:4rem;
-  position:relative;
-  overflow:hidden;
-}
-.hero-bg-text{
-  position:absolute;
-  font-family:var(--display);
-  font-size:38vw;
-  font-weight:900;
-  color:transparent;
-  -webkit-text-stroke:1.5px rgba(13,13,13,0.055);
-  letter-spacing:-0.05em;
-  line-height:0.85;
-  top:50%;
-  left:50%;
-  transform:translate(-46%,-50%);
-  user-select:none;
-  pointer-events:none;
-  white-space:nowrap;
-  z-index:0;
-}
-.hero-grid{z-index:1}
-.hero-scroll{z-index:1}
-
-.hero-tag{
-  position:absolute;
-  border:1.5px solid var(--ink);
-  border-radius:12px;
-  padding:14px 18px;
-  background:rgba(245,242,235,0.85);
-  backdrop-filter:blur(8px);
-  z-index:2;
-}
-.hero-tag-label{
-  font-size:9px;font-weight:700;
-  letter-spacing:0.12em;text-transform:uppercase;
-  color:#999;margin-bottom:4px;
-}
-.hero-tag-value{
-  font-family:var(--display);
-  font-size:13px;font-weight:700;
-  letter-spacing:-0.01em;
-}
-.hero-tag-dot{
-  display:inline-block;
-  width:7px;height:7px;
-  background:var(--lime);
-  border-radius:50%;
-  border:1.5px solid var(--ink);
-  margin-right:6px;
-  animation:pulse 2s ease-in-out infinite;
-}
-.hero-tag-tr{top:2.5rem;right:4rem;}
-.hero-tag-bl{bottom:5.5rem;left:4rem;}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:3rem;
-  flex:1;
-  padding-bottom:3rem;
-}
-.hero-left{}
-.hero-right{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:1.5rem;
-}
-.hero-tagline{
-  font-size:clamp(1.3rem,2.2vw,2rem);
-  font-family:var(--body);
-  font-weight:300;
-  color:#444;
-  letter-spacing:-0.01em;
-  line-height:1.4;
-  max-width:38ch;
-}
-.hero-meta{
-  display:flex;gap:3rem;
-}
-.hero-meta-item{
-  display:flex;flex-direction:column;gap:2px;
-}
-.hero-meta-label{
-  font-size:12px;font-weight:700;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:#999;
-}
-.hero-meta-value{
-  font-family:var(--display);
-  font-size:3.2rem;font-weight:900;
-  letter-spacing:-0.03em;
-  color:var(--ink);
-}
-.hero-meta-unit{
-  font-size:1.2rem;font-weight:400;
-  font-family:var(--body);
-  color:#666;
-}
-.hero-cta{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--ink);color:var(--white);
-  font-family:var(--display);font-size:15px;font-weight:700;
-  letter-spacing:0.04em;text-transform:uppercase;
-  padding:18px 36px;border-radius:2px;
-  text-decoration:none;
-  align-self:flex-start;
-  transition:background 0.2s,color 0.2s;
-}
-.hero-cta:hover{background:var(--lime);color:var(--ink)}
-.hero-cta-cv{
-  display:inline-flex;align-items:center;gap:10px;
-  background:transparent;color:var(--ink);
-  font-family:var(--display);font-size:15px;font-weight:700;
-  letter-spacing:0.04em;text-transform:uppercase;
-  padding:17px 36px;border-radius:2px;
-  border:1.5px solid var(--ink);
-  text-decoration:none;
-  align-self:flex-start;
-  transition:background 0.2s,color 0.2s;
-}
-.hero-cta-cv:hover{background:var(--ink);color:var(--white)}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
-
-.hero-chips{
-  display:flex;flex-wrap:wrap;gap:10px;
-  margin-top:0.75rem;
-}
-.hero-links{
-  display:flex;gap:12px;
-  margin-top:1.25rem;
-}
-.hero-link{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:13px;font-weight:600;
-  color:var(--ink);
-  text-decoration:none;
-  border-bottom:1.5px solid var(--ink);
-  padding-bottom:2px;
-  transition:color 0.2s,border-color 0.2s;
-}
-.hero-link:hover{color:var(--pink);border-color:var(--pink)}
-.hero-chip{
-  font-size:14px;font-weight:500;
-  padding:9px 18px;
-  border-radius:24px;
-  border:1.5px solid rgba(13,13,13,0.25);
-  background:rgba(245,242,235,0.7);
-  backdrop-filter:blur(4px);
-  letter-spacing:0.01em;
-  color:#555;
-}
-
-.hero-scroll{
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  padding:1.5rem 0;
-  font-size:10px;font-weight:700;
-  letter-spacing:0.14em;text-transform:uppercase;
-  color:#aaa;
-}
-.hero-scroll-line{
-  width:1px;height:36px;
-  background:linear-gradient(to bottom,#aaa,transparent);
-  animation:scrollDrop 1.8s ease-in-out infinite;
-}
-@keyframes scrollDrop{
-  0%{transform:scaleY(0);transform-origin:top;opacity:1}
-  50%{transform:scaleY(1);transform-origin:top;opacity:1}
-  100%{transform:scaleY(1);transform-origin:bottom;opacity:0}
-}
-.hero-eyebrow{
-  display:flex;align-items:center;gap:12px;
-  font-size:15px;font-weight:500;
-  letter-spacing:0.1em;
-  color:var(--ink);
-  margin-bottom:1.5rem;
-  text-transform:uppercase;
-}
-.hero-dot{
-  width:12px;height:12px;
-  background:var(--lime);
-  border-radius:50%;
-  border:2px solid var(--ink);
-  animation:pulse 2s ease-in-out infinite;
-  flex-shrink:0;
-}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
-
-.hero-name{
-  font-family:var(--display);
-  font-size:clamp(4rem,11vw,10rem);
-  font-weight:900;
-  line-height:0.92;
-  letter-spacing:-0.04em;
-  margin-bottom:0;
-}
-.hero-name .line2{
-  display:block;
-  color:var(--white);
-  -webkit-text-stroke:2px var(--ink);
-  letter-spacing:-0.04em;
-}
-
-/* MARQUEE */
-.hero-strip{
-  display:flex;align-items:center;
-  overflow:hidden;
-  border-top:1.5px solid var(--ink);
-  border-bottom:1.5px solid var(--ink);
-  background:var(--lime);
-  margin:0 -4rem;
-}
-.hero-strip-inner{
-  display:flex;
-  animation:marquee 14s linear infinite;
-  white-space:nowrap;
-}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.strip-item{
-  font-family:var(--display);
-  font-size:13px;font-weight:700;
-  padding:10px 28px;
-  letter-spacing:0.04em;
-  color:var(--ink);
-  border-right:1.5px solid var(--ink);
-}
-
-/* BENTO GRID */
-.bento{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:16px;
-  margin:2rem 0;
-}
-
-.cell{
-  background:var(--white);
-  border:1.5px solid var(--ink);
-  border-radius:20px;
-  padding:2rem;
-  position:relative;
-  overflow:hidden;
-  opacity:0;
-  transform:translateY(56px) scale(0.96);
-  transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1) var(--reveal-delay,0ms),
-             transform 0.85s cubic-bezier(0.16,1,0.3,1) var(--reveal-delay,0ms),
-             box-shadow 0.2s ease;
-}
-.cell.visible{
-  opacity:1;
-  transform:none;
-}
-.cell:hover{
-  box-shadow:5px 5px 0 var(--ink);
-}
-
-.c-2{grid-column:span 2}
-.c-3{grid-column:span 3}
-.c-4{grid-column:span 4}
-.c-5{grid-column:span 5}
-.c-6{grid-column:span 6}
-.c-7{grid-column:span 7}
-.c-8{grid-column:span 8}
-.c-9{grid-column:span 9}
-.c-12{grid-column:span 12}
-.r-2{grid-row:span 2}
-
-.cell-lime{background:var(--lime)}
-.cell-pink{background:var(--pink);color:var(--white)}
-.cell-blue{background:var(--blue);color:var(--white)}
-.cell-ink{background:var(--ink);color:var(--white)}
-.cell-orange{background:var(--orange);color:var(--white)}
-.cell-sky{background:var(--sky)}
-
-.cell-label{
-  font-size:11px;font-weight:700;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  opacity:0.5;
-  margin-bottom:1rem;
-}
-.cell-title{
-  font-family:var(--display);
-  font-weight:700;
-  font-size:1.4rem;
-  line-height:1.2;
-  margin-bottom:0.75rem;
-  letter-spacing:-0.02em;
-}
-.cell-body{
-  font-size:13px;
-  line-height:1.75;
-  opacity:0.85;
-}
-
-.stat-big{
-  font-family:var(--display);
-  font-size:5rem;
-  font-weight:900;
-  line-height:1;
-  letter-spacing:-0.04em;
-}
-.stat-unit{font-size:1.8rem}
-
-.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}
-.tag-pill{
-  font-size:12px;font-weight:500;
-  padding:5px 14px;
-  border-radius:20px;
-  border:1.5px solid currentColor;
-  white-space:nowrap;
-}
-.cell-blue .tag-pill{border-color:rgba(255,255,255,0.85);color:#fff;background:rgba(255,255,255,0.15)}
-.cell-ink .tag-pill{border-color:rgba(255,255,255,0.6);color:#fff;background:rgba(255,255,255,0.1)}
-.cell-lime .tag-pill{border-color:rgba(0,0,0,0.5);color:#0d0d0d;background:rgba(0,0,0,0.08)}
-.cell-orange .tag-pill{border-color:rgba(255,255,255,0.85);color:#fff;background:rgba(255,255,255,0.15)}
-.cell .tag-pill{border-color:rgba(0,0,0,0.4);color:#0d0d0d;font-weight:600;background:rgba(0,0,0,0.05)}
-
-.exp-item{
-  padding:1.25rem 0;
-  border-bottom:1px solid rgba(0,0,0,0.08);
-}
-.exp-item:last-child{border-bottom:none;padding-bottom:0}
-.exp-item:first-child{padding-top:0}
-.exp-meta{
-  font-size:11px;font-weight:600;
-  letter-spacing:0.08em;text-transform:uppercase;
-  opacity:0.45;margin-bottom:6px;
-}
-.exp-role{
-  font-family:var(--display);
-  font-size:1.4rem;font-weight:700;
-  letter-spacing:-0.02em;
-  line-height:1.2;
-}
-.exp-co{font-size:14px;opacity:0.6;margin-top:4px}
-
-.proj-list{display:flex;flex-direction:column;gap:10px;margin-top:0.75rem}
-.proj-item{
-  background:rgba(255,255,255,0.07);
-  border-radius:12px;
-  padding:18px 20px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.proj-name{font-size:16px;font-weight:600}
-.proj-sub{font-size:13px;opacity:0.5;margin-top:4px}
-.proj-badge{
-  font-size:11px;font-weight:700;letter-spacing:0.06em;
-  padding:4px 12px;border-radius:10px;
-  text-transform:uppercase;white-space:nowrap;margin-left:12px;
-}
-.badge-active{background:var(--lime);color:var(--ink)}
-.badge-wip{background:var(--orange);color:var(--white)}
-.badge-done{background:rgba(255,255,255,0.15);color:inherit}
-
-.overflow-text{
-  font-family:var(--display);
-  font-size:5rem;font-weight:900;
-  letter-spacing:-0.04em;line-height:1;
-  opacity:0.07;position:absolute;
-  bottom:-10px;right:-10px;
-  white-space:nowrap;user-select:none;
-}
-
-.avail-pill{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--lime);
-  border:1.5px solid var(--ink);
-  border-radius:30px;
-  padding:12px 24px;
-  font-size:13px;font-weight:700;
-  letter-spacing:0.06em;text-transform:uppercase;
-}
-.avail-dot{
-  width:9px;height:9px;background:var(--ink);
-  border-radius:50%;animation:pulse 1.5s ease-in-out infinite;
-}
-
-/* ── Hero entrance – transition-based, bidirectional ── */
-.hero-eyebrow,.hero-tagline,.hero-meta,.hero-ctas,.hero-chips,.hero-links,.hero-scroll,.hero-strip{
-  opacity:0;transform:translateY(32px);
-  transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),
-             transform 0.85s cubic-bezier(0.16,1,0.3,1);
-}
-.hero-name{
-  opacity:0;clip-path:inset(0 100% 0 0);
-  transition:clip-path 1.2s cubic-bezier(0.16,1,0.3,1),opacity 0.1s ease;
-}
-.hero-tag{
-  opacity:0;transform:scale(0.93) translateY(10px);
-  transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-             transform 0.7s cubic-bezier(0.16,1,0.3,1);
-}
-.hero-bg-text{opacity:0;transition:opacity 2s ease}
-
-/* ── hero-in state – delays stagger in ── */
-.hero.hero-in .hero-eyebrow{opacity:1;transform:none;transition-delay:0.1s}
-.hero.hero-in .hero-name{opacity:1;clip-path:inset(0 0% 0 0);transition-delay:0.28s}
-.hero.hero-in .hero-tagline{opacity:1;transform:none;transition-delay:0.65s}
-.hero.hero-in .hero-meta{opacity:1;transform:none;transition-delay:0.8s}
-.hero.hero-in .hero-ctas{opacity:1;transform:none;transition-delay:0.95s}
-.hero.hero-in .hero-chips{opacity:1;transform:none;transition-delay:1.05s}
-.hero.hero-in .hero-links{opacity:1;transform:none;transition-delay:1.15s}
-.hero.hero-in .hero-tag-tr{opacity:1;transform:none;transition-delay:1.2s}
-.hero.hero-in .hero-tag-bl{opacity:1;transform:none;transition-delay:1.35s}
-.hero.hero-in .hero-bg-text{opacity:1;transition-delay:0.3s}
-.hero.hero-in .hero-scroll{opacity:1;transform:none;transition-delay:1.4s}
-.hero.hero-in .hero-strip{opacity:1;transform:none;transition-delay:1.5s}
-
-/* ── exit – no stagger, all disappear together ── */
-.hero.hero-out .hero-eyebrow,.hero.hero-out .hero-tagline,.hero.hero-out .hero-meta,
-.hero.hero-out .hero-ctas,.hero.hero-out .hero-chips,.hero.hero-out .hero-links,
-.hero.hero-out .hero-scroll,.hero.hero-out .hero-strip,
-.hero.hero-out .hero-name,.hero.hero-out .hero-tag,.hero.hero-out .hero-bg-text{
-  transition-delay:0ms!important;
-  transition-duration:0.35s!important;
-}
-
-.section-label{
-  font-family:var(--display);
-  font-size:11px;font-weight:700;
-  letter-spacing:0.14em;text-transform:uppercase;
-  color:#999;
-  margin:4rem 0 0.75rem;
-}
-
-
-footer{
-  border-top:1.5px solid var(--ink);
-  padding:2rem 4rem;
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:12px;letter-spacing:0.04em;
-  font-weight:500;color:#888;
-}
-/* CONTACT */
-.contact-wrap{margin:1rem 0 3rem}
-.contact-card{
-  background:var(--ink);color:var(--white);
-  border:1.5px solid var(--ink);border-radius:20px;
-  padding:3rem;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;
-}
-.contact-headline{
-  font-family:var(--display);
-  font-size:clamp(2rem,4vw,3.5rem);font-weight:900;
-  letter-spacing:-0.04em;line-height:1.05;
-  margin:0.75rem 0 1rem;
-}
-.contact-sub{font-size:14px;line-height:1.7;opacity:0.6;max-width:36ch}
-.contact-right{
-  display:flex;flex-direction:column;gap:0;
-  min-width:300px;flex-shrink:0;
-}
-.contact-link{
-  display:flex;align-items:center;justify-content:space-between;
-  text-decoration:none;color:var(--white);
-  padding:1rem 0;
-  border-bottom:1px solid rgba(255,255,255,0.12);
-  transition:opacity 0.2s;
-}
-.contact-link:hover{opacity:0.7}
-.contact-link-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.45}
-.contact-link-value{font-size:14px;font-weight:500}
-.contact-cv{
-  display:inline-flex;align-items:center;
-  margin-top:1.5rem;
-  background:var(--lime);color:var(--ink);
-  font-family:var(--display);font-size:13px;font-weight:700;
-  letter-spacing:0.04em;text-transform:uppercase;
-  padding:14px 28px;border-radius:2px;
-  text-decoration:none;align-self:flex-start;
-  transition:opacity 0.2s;
-}
-.contact-cv:hover{opacity:0.85}
-
-.footer-links{display:flex;gap:1.5rem}
-.footer-link{
-  color:#888;text-decoration:none;
-  transition:color 0.2s;
-}
-.footer-link:hover{color:var(--ink)}
-
-.hamburger{
-  display:none;
-  flex-direction:column;gap:5px;
-  background:none;border:none;cursor:none;
-  padding:4px;
-}
-.hamburger span{
-  display:block;width:22px;height:2px;
-  background:var(--ink);
-  transition:transform 0.25s ease, opacity 0.25s ease;
-}
+.hamburger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);transition:transform .25s,opacity .25s}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
 .mobile-menu{
-  display:none;
-  position:fixed;top:64px;left:0;right:0;
-  background:rgba(245,242,235,0.97);
-  backdrop-filter:blur(16px);
-  border-bottom:1.5px solid var(--ink);
-  padding:1.5rem 2rem;
-  flex-direction:column;gap:1.25rem;
-  z-index:99;
+  display:none;position:fixed;top:68px;left:0;right:0;z-index:99;
+  background:var(--bg);border-bottom:1px solid var(--line);
+  padding:1rem var(--gutter) 1.5rem;flex-direction:column;
 }
 .mobile-menu.open{display:flex}
-.mobile-menu a{
-  font-size:16px;font-weight:500;
-  text-decoration:none;color:var(--ink);
-  letter-spacing:0.02em;
+.mobile-menu a{font-size:17px;font-weight:500;text-decoration:none;padding:12px 0;border-bottom:1px solid var(--line)}
+.mobile-menu a:last-child{border-bottom:0}
+
+/* HERO */
+.hero{
+  padding:140px 0 72px;
+  position:relative;
+  background:
+    linear-gradient(var(--bg),rgba(244,247,253,0) 30%,rgba(244,247,253,0) 70%,var(--bg)),
+    linear-gradient(90deg,rgba(31,79,255,.06) 1px,transparent 1px) 0 0/40px 40px,
+    linear-gradient(rgba(31,79,255,.06) 1px,transparent 1px) 0 0/40px 40px;
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:500;color:var(--navy-2);margin-bottom:24px;
+}
+.hero-name{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(3.4rem,8.4vw,7rem);
+  line-height:.9;letter-spacing:-0.045em;
+  color:var(--navy);
+}
+.hero-name span{display:block;color:var(--cobalt)}
+.hero-lede{
+  font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--navy-2);
+  max-width:34ch;margin:28px 0 36px;line-height:1.5;
+}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--body);font-size:16px;font-weight:600;
+  padding:14px 24px;border-radius:12px;text-decoration:none;cursor:pointer;
+  border:1.5px solid transparent;transition:transform .15s,background .2s,color .2s,border-color .2s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--cobalt);color:#fff}
+.btn-primary:hover{background:var(--cobalt-deep)}
+.btn-ghost{background:transparent;color:var(--navy);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--cobalt);color:var(--cobalt)}
+.hero-facts{display:flex;gap:36px;margin-top:44px;flex-wrap:wrap}
+.fact b{
+  display:block;font-family:var(--display);font-weight:800;font-size:2.4rem;
+  letter-spacing:-0.03em;line-height:1;color:var(--navy);
+}
+.fact small{font-size:14px;color:var(--navy-2)}
+
+/* TEST RUNNER — the signature piece */
+.runner{
+  background:var(--navy);color:#DCE6FF;border-radius:20px;
+  box-shadow:0 30px 60px -20px rgba(10,31,68,.45),0 0 0 1px rgba(10,31,68,.9);
+  overflow:hidden;font-family:var(--mono);font-size:13.5px;
+}
+.runner-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 18px;border-bottom:1px solid rgba(142,197,255,.14);
+}
+.runner-dots{display:flex;gap:7px}
+.runner-dots i{width:11px;height:11px;border-radius:50%;background:rgba(142,197,255,.25)}
+.runner-dots i:first-child{background:var(--cobalt)}
+.runner-file{color:var(--sky);font-size:13px}
+.runner-cmd{padding:16px 18px 6px;color:rgba(220,230,255,.6)}
+.runner-cmd b{color:#fff;font-weight:600}
+.runner-list{list-style:none;padding:6px 8px 8px}
+.t{
+  display:flex;align-items:flex-start;gap:12px;width:100%;
+  background:none;border:0;color:inherit;font:inherit;text-align:left;
+  padding:9px 10px;border-radius:8px;cursor:pointer;
+  opacity:.35;transition:opacity .25s,background .2s;
+}
+.t:hover{background:rgba(142,197,255,.08)}
+.t.done,.t.running,.t.failed{opacity:1}
+.t-icon{width:18px;flex-shrink:0;text-align:center;font-weight:600}
+.t-icon::before{content:"○";color:rgba(220,230,255,.4)}
+.t.running .t-icon::before{content:"◐";color:var(--sky);display:inline-block;animation:spin .6s linear infinite}
+.t.done .t-icon::before{content:"✓";color:#3DDC97}
+.t.failed .t-icon::before{content:"✕";color:#FF8A8D}
+@keyframes spin{to{transform:rotate(360deg)}}
+.t-name{flex:1}
+.t-time{color:rgba(220,230,255,.4);font-size:12px;white-space:nowrap}
+.t-err{
+  display:none;margin:2px 10px 6px 40px;padding:10px 12px;border-radius:8px;
+  background:rgba(229,72,77,.12);border-left:3px solid var(--fail);color:#FFC2C4;font-size:12.5px;
+}
+.t-err.show{display:block}
+.t-err .patched{color:#3DDC97}
+.runner-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  padding:14px 18px;border-top:1px solid rgba(142,197,255,.14);background:rgba(0,0,0,.15);
+}
+.summary{font-size:13px}
+.summary .p{color:#3DDC97}.summary .f{color:#FF8A8D}
+.runner-actions{display:flex;gap:8px}
+.r-btn{
+  font-family:var(--mono);font-size:12.5px;font-weight:600;
+  padding:8px 12px;border-radius:8px;cursor:pointer;
+  border:1px solid rgba(142,197,255,.3);background:transparent;color:var(--sky);
+  transition:background .2s,color .2s;
+}
+.r-btn:hover{background:var(--sky);color:var(--navy)}
+.r-btn:disabled{opacity:.4;cursor:not-allowed;background:transparent;color:var(--sky)}
+.runner-hint{font-family:var(--body);font-size:14px;color:var(--navy-2);margin-top:14px;text-align:center}
+
+
+/* SECTIONS */
+section.block{padding:112px 0}
+.block-head{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;margin-bottom:56px;align-items:end}
+.block-title{
+  font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,4.6vw,3.6rem);
+  line-height:1;letter-spacing:-0.035em;
+}
+.block-intro{color:var(--navy-2);font-size:1.08rem;max-width:56ch}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
+.about-text p{font-size:1.12rem;line-height:1.7;max-width:62ch;color:var(--navy-2)}
+.about-text p+p{margin-top:1.1em}
+.about-text p:first-child{font-family:var(--display);font-weight:700;font-size:1.65rem;line-height:1.3;color:var(--navy);letter-spacing:-0.02em}
+.about-side{display:flex;flex-direction:column;gap:16px}
+.side-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.side-card h3{font-size:14px;font-weight:600;color:var(--navy-2);margin-bottom:6px}
+.side-card p{font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:-0.01em;line-height:1.3}
+.side-card.blue{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+.side-card.blue h3{color:var(--pale)}
+
+/* SKILLS — tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tab{
+  font-family:var(--body);font-size:15px;font-weight:600;
+  padding:10px 18px;border-radius:999px;cursor:pointer;
+  background:var(--surface);color:var(--navy-2);border:1px solid var(--line);
+  transition:background .2s,color .2s,border-color .2s;
+}
+.tab:hover{border-color:var(--cobalt);color:var(--cobalt)}
+.tab[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.panel{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:44px;
+  min-height:260px;
+}
+.panel[hidden]{display:none}
+.panel.enter{animation:panelIn .35s ease}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.panel h3{font-family:var(--display);font-weight:800;font-size:2.2rem;letter-spacing:-0.03em;line-height:1.05;margin-bottom:12px}
+.panel p{color:var(--navy-2);max-width:42ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  font-size:15px;font-weight:500;padding:10px 16px;border-radius:12px;
+  background:var(--pale);color:var(--cobalt-deep);
 }
 
-@media(max-width:700px){
-  .c-2,.c-3,.c-4,.c-5,.c-6,.c-7,.c-8,.c-9{grid-column:span 12}
-  .r-2{grid-row:span 1}
-  .stat-big{font-size:3rem}
-  .hero-grid{grid-template-columns:1fr}
-  .hero-name{font-size:clamp(2.8rem,12vw,5rem)}
-  .nav-links{display:none}
+/* EXPERIENCE — timeline */
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding-bottom:48px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:-40px;top:6px;width:24px;height:24px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--line);
+}
+.tl-item.current::before{background:var(--cobalt);border-color:var(--cobalt);box-shadow:0 0 0 6px var(--pale)}
+.tl-when{font-size:14px;font-weight:600;color:var(--cobalt)}
+.tl-role{font-family:var(--display);font-weight:800;font-size:1.9rem;letter-spacing:-0.025em;line-height:1.15;margin:4px 0}
+.tl-co{color:var(--navy-2);font-weight:500}
+.tl-body{color:var(--navy-2);max-width:68ch;margin-top:14px}
+.tl-products{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tl-products span{font-size:14px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+
+/* PROJECTS — expandable */
+.projects{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.proj{border-bottom:1px solid var(--line)}
+.proj summary{
+  list-style:none;cursor:pointer;
+  display:grid;grid-template-columns:1fr auto 40px;gap:24px;align-items:center;
+  padding:28px 4px;transition:padding .25s;
+}
+.proj summary::-webkit-details-marker{display:none}
+.proj summary:hover{padding-left:16px}
+.proj-name{font-family:var(--display);font-weight:700;font-size:clamp(1.3rem,2.4vw,1.9rem);letter-spacing:-0.02em;line-height:1.2}
+.proj-sub{font-size:15px;color:var(--navy-2);margin-top:4px}
+.badge{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.badge.active{background:var(--cobalt);color:#fff}
+.badge.building{background:var(--pale);color:var(--cobalt-deep)}
+.badge.done{background:transparent;color:var(--navy-2);border:1px solid var(--line)}
+.proj-toggle{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+  display:grid;place-items:center;transition:transform .3s,background .2s,border-color .2s;
+}
+.proj-toggle::before{content:"+";font-size:22px;line-height:1;color:var(--navy)}
+.proj[open] .proj-toggle{transform:rotate(45deg);background:var(--cobalt);border-color:var(--cobalt)}
+.proj[open] .proj-toggle::before{color:#fff}
+.proj-detail{padding:0 4px 32px;max-width:72ch;color:var(--navy-2)}
+.proj-detail ul{margin:12px 0 0 20px}
+.proj-detail li+li{margin-top:6px}
+
+/* CONTACT */
+.contact{
+  background:var(--cobalt);color:#fff;border-radius:32px;
+  padding:clamp(40px,7vw,88px);
+  display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end;
+  position:relative;overflow:hidden;
+}
+.contact::after{
+  content:"✓";position:absolute;right:-30px;top:-90px;
+  font-family:var(--display);font-weight:800;font-size:420px;line-height:1;color:rgba(255,255,255,.07);
+  pointer-events:none;
+}
+.contact h2{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6vw,5rem);line-height:.95;letter-spacing:-0.04em}
+.contact p{color:var(--pale);margin-top:20px;max-width:40ch;font-size:1.08rem}
+.contact-links{display:flex;flex-direction:column;position:relative;z-index:1}
+.c-row{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 0;border-bottom:1px solid rgba(255,255,255,.22);
+  text-decoration:none;color:#fff;font-weight:500;
+}
+.c-row span:first-child{color:var(--pale);font-size:14px}
+a.c-row:hover span:last-child{text-decoration:underline;text-underline-offset:4px}
+.copy-btn{
+  background:#fff;color:var(--cobalt-deep);border:0;border-radius:10px;
+  font:600 14px var(--body);padding:8px 14px;cursor:pointer;transition:background .2s;
+}
+.copy-btn:hover{background:var(--pale)}
+.contact .btn{margin-top:28px;background:#fff;color:var(--cobalt-deep);align-self:flex-start}
+.contact .btn:hover{background:var(--navy);color:#fff}
+
+/* TOAST */
+.toast{
+  position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;
+  background:var(--navy);color:#fff;padding:12px 18px;border-radius:12px;font-weight:500;font-size:15px;
+  display:flex;align-items:center;gap:10px;z-index:300;pointer-events:none;
+  transition:opacity .25s,transform .25s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast::before{content:"✓";color:#3DDC97;font-weight:700}
+
+footer{padding:48px 0;color:var(--navy-2);font-size:15px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot nav{position:static;background:none;backdrop-filter:none;border:0;display:flex;gap:24px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--cobalt)}
+
+/* reveal (one quiet orchestrated entrance per block) */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .hero-grid,.about-grid,.block-head,.panel,.contact{grid-template-columns:1fr}
+  .hero{padding-top:112px}
+  .block-head{gap:16px}
+  section.block{padding:80px 0}
+}
+@media (max-width:760px){
+  .nav-links,.nav-inner>.status-pill{display:none}
   .hamburger{display:flex}
-  .hero-tag{display:none}
-  .nav-cv-link{display:none}
-  main{padding:64px 1.5rem 3rem}
-  .hero{margin:0 -1.5rem;padding-left:1.5rem;padding-right:1.5rem}
-  .hero-strip{margin:0 -1.5rem}
-  .contact-card{flex-direction:column;gap:2rem}
-  .contact-right{min-width:unset;width:100%}
-  footer{padding:1.5rem;flex-direction:column;gap:1rem;text-align:center}
-  .footer-links{justify-content:center;flex-wrap:wrap}
+  .panel{padding:28px}
+  .proj summary{grid-template-columns:1fr 40px;gap:12px}
+  .proj summary .badge{grid-column:1;grid-row:2;justify-self:start}
+  .proj summary .proj-toggle{grid-column:2;grid-row:1 / span 2}
+  .runner{font-size:12.5px}
+  .t-time{display:none}
+  .hero-facts{gap:20px;flex-wrap:nowrap}
+  .fact b{font-size:1.9rem}
+  .fact small{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<div id="progress" aria-hidden="true"></div>
 
-<nav>
-  <div class="nav-inner">
-    <div class="nav-logo">BAYU.AF</div>
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Bayu Afriyadi, back to top">
+      <span class="nav-logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 100 100"><path d="M18 52l20 20 44-44" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      bayu afriyadi
+    </a>
     <div class="nav-links">
-      <a href="#about">about</a>
-      <a href="#skills">skills</a>
-      <a href="#experience">experience</a>
-      <a href="#projects">projects</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div style="display:flex;align-items:center;gap:12px">
-      <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="nav-badge">Open to work</a>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="status-pill"><span class="live-dot"></span>Open to work</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -690,379 +422,399 @@ footer{
   <a href="#skills">Skills</a>
   <a href="#experience">Experience</a>
   <a href="#projects">Projects</a>
-  <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener">Download CV ↓</a>
-  <a href="mailto:bayuafriyadi5@gmail.com">bayuafriyadi5@gmail.com</a>
+  <a href="#contact">Contact</a>
+  <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener">Download CV</a>
 </div>
 
-<main>
+<main id="top">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg-text">QA</div>
-    <div class="hero-tag hero-tag-tr">
-      <div class="hero-tag-label">Current role</div>
-      <div class="hero-tag-value"><span class="hero-tag-dot"></span>QA Engineer @ Yesdok</div>
-    </div>
-    <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="hero-tag hero-tag-bl" style="text-decoration:none;color:inherit">
-      <div class="hero-tag-label">Looking for</div>
-      <div class="hero-tag-value">QA / Lead QA · Full-time</div>
-    </a>
-    <div class="hero-grid">
-      <div class="hero-left">
-        <div class="hero-eyebrow">
-          <div class="hero-dot"></div>
-          QA Engineer · Bogor, ID · Healthtech
-        </div>
-        <h1 class="hero-name">
-          BAYU
-          <span class="line2">AFRIYADI</span>
-        </h1>
-      </div>
-      <div class="hero-right">
-        <p class="hero-tagline">Making software worthy of trust, one test at a time.</p>
-        <div class="hero-meta">
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Experience</span>
-            <span class="hero-meta-value">1<span class="hero-meta-unit">yr</span></span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Products</span>
-            <span class="hero-meta-value">5</span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Stacks</span>
-            <span class="hero-meta-value">3</span>
-          </div>
-        </div>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-kicker"><span class="live-dot"></span>QA Engineer at Yesdok, Bogor</div>
+        <h1 class="hero-name">Bayu<span>Afriyadi</span></h1>
+        <p class="hero-lede">I break software on purpose, so patients and doctors never run into it by accident.</p>
         <div class="hero-ctas">
-          <a href="#about" class="hero-cta">View My Work →</a>
-          <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener" class="hero-cta-cv">Download CV ↓</a>
+          <a href="#projects" class="btn btn-primary">See my work</a>
+          <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost">Download CV</a>
         </div>
-        <div class="hero-chips">
-          <span class="hero-chip">Bogor, Indonesia</span>
-          <span class="hero-chip">Remote friendly</span>
-          <span class="hero-chip">Healthtech focused</span>
-          <span class="hero-chip">Jun 2025 - Present</span>
+        <div class="hero-facts">
+          <div class="fact"><b>1 yr</b><small>professional QA</small></div>
+          <div class="fact"><b>5</b><small>products owned solo</small></div>
+          <div class="fact"><b>3</b><small>stacks: web, mobile, API</small></div>
         </div>
       </div>
+
+      <div>
+        <div class="runner" role="region" aria-label="Interactive test run of Bayu's profile">
+          <div class="runner-bar">
+            <div class="runner-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="runner-file">tests/bayu.spec.ts</span>
+          </div>
+          <div class="runner-cmd">$ <b>npx playwright test</b> bayu.spec.ts</div>
+          <ol class="runner-list" id="runnerList"></ol>
+          <div class="runner-foot">
+            <span class="summary" id="summary" aria-live="polite">queued</span>
+            <div class="runner-actions">
+              <button class="r-btn" id="bugBtn" type="button">Inject a bug</button>
+              <button class="r-btn" id="rerunBtn" type="button">Run again</button>
+            </div>
+          </div>
+        </div>
+        <p class="runner-hint">Click any test to jump to that part of the page.</p>
+      </div>
     </div>
-    <div class="hero-scroll">
-      <div class="hero-scroll-line"></div>
-      scroll
-    </div>
-    <div class="hero-strip">
-      <div class="hero-strip-inner">
-        <span class="strip-item">PLAYWRIGHT</span>
-        <span class="strip-item">APPIUM</span>
-        <span class="strip-item">PYTEST</span>
-        <span class="strip-item">TYPESCRIPT</span>
-        <span class="strip-item">PYTHON</span>
-        <span class="strip-item">API TESTING</span>
-        <span class="strip-item">MOBILE QA</span>
-        <span class="strip-item">HEALTHTECH</span>
-        <span class="strip-item">PLAYWRIGHT</span>
-        <span class="strip-item">APPIUM</span>
-        <span class="strip-item">PYTEST</span>
-        <span class="strip-item">TYPESCRIPT</span>
-        <span class="strip-item">PYTHON</span>
-        <span class="strip-item">API TESTING</span>
-        <span class="strip-item">MOBILE QA</span>
-        <span class="strip-item">HEALTHTECH</span>
+  </header>
+
+
+  <!-- ABOUT -->
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="block-head reveal">
+        <h2 class="block-title">Fresh grad.<br>Solo QA.<br>Five products.</h2>
+        <p class="block-intro">No senior QA to shadow. Just me, my frameworks, and a lot of bugs to find before users do.</p>
+      </div>
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <p>I went straight from Informatics Engineering at UNIKOM to owning quality end to end at Yesdok, a healthtech startup with web panels, mobile apps, and live payment flows.</p>
+          <p>I built the whole automation stack from scratch: Playwright for web, Appium for mobile, Pytest for API. In healthtech, bugs aren't just inconvenient. They reach real patients and doctors, and that weight keeps me precise.</p>
+          <p>Outside of work I'm obsessed with how systems fail. I read post-mortems, reverse-engineer edge cases, and think about what "good enough" really means when a doctor is mid-consultation.</p>
+        </div>
+        <div class="about-side">
+          <div class="side-card blue">
+            <h3>Looking for</h3>
+            <p>QA or Lead QA roles, full-time or contract</p>
+          </div>
+          <div class="side-card">
+            <h3>Education</h3>
+            <p>Informatics Engineering, UNIKOM, class of 2024</p>
+          </div>
+          <div class="side-card">
+            <h3>Based in</h3>
+            <p>Bogor, Indonesia. Remote friendly.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <p class="section-label" id="about">About</p>
-  <div class="bento">
-    <div class="cell cell-ink c-7 r-2">
-      <div class="cell-label">Who I am</div>
-      <div style="font-family:var(--display);font-size:2rem;font-weight:700;letter-spacing:-0.03em;line-height:1.3;margin-bottom:1.25rem">
-        Fresh grad. Solo QA. Five products. Zero hand-holding.
-      </div>
-      <div class="cell-body" style="opacity:0.7">
-        I jumped straight from UNIKOM's Informatics Engineering into owning quality end-to-end at Yesdok, a healthtech startup with web panels, mobile apps, and live payment flows. No senior QA to shadow. Just me, my frameworks, and a lot of bugs to find before users do.
-      </div>
-      <div class="cell-body" style="opacity:0.7;margin-top:1rem">
-        I built the entire automation stack from scratch: Playwright for web, Appium for mobile, Pytest for API. In healthtech, bugs aren't just inconvenient. They affect real patients and doctors. That weight keeps me precise.
-      </div>
-      <div class="cell-body" style="opacity:0.7;margin-top:1rem">
-        Outside of work I'm obsessed with how systems fail. Reading post-mortems, reverse-engineering edge cases, thinking about what "good enough" actually means when a doctor is mid-consultation.
-      </div>
-      <div class="overflow-text">QA</div>
-    </div>
-    <div class="cell cell-lime c-5">
-      <div class="cell-label">Experience</div>
-      <div class="stat-big">1<span class="stat-unit">yr</span></div>
-      <div class="cell-body" style="margin-top:0.5rem">Professional QA at healthtech startup</div>
-    </div>
-    <div class="cell cell-blue c-3">
-      <div class="cell-label">Products</div>
-      <div class="stat-big">5</div>
-      <div class="cell-body" style="margin-top:0.5rem;color:rgba(255,255,255,0.7)">Apps under my watch</div>
-    </div>
-    <div class="cell cell-pink c-2">
-      <div class="cell-label">Stacks</div>
-      <div class="stat-big" style="font-size:3rem">3</div>
-      <div class="cell-body" style="margin-top:0.5rem;color:rgba(255,255,255,0.7)">Web · Mobile · API</div>
-    </div>
-    <div class="cell cell-sky c-5" style="display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;gap:12px">
-      <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="avail-pill" style="text-decoration:none;color:inherit"><div class="avail-dot"></div>Open to work</a>
-      <div class="cell-body">Looking for QA / Lead QA opportunities</div>
-    </div>
-    <div class="cell c-7">
-      <div class="cell-label">Education</div>
-      <div class="cell-title">Informatics Engineering</div>
-      <div class="cell-body">UNIKOM (Universitas Komputer Indonesia) · Class of 2024</div>
-    </div>
-  </div>
-
   <!-- SKILLS -->
-  <p class="section-label" id="skills">Skills</p>
-  <div class="bento">
-    <div class="cell cell-blue c-6">
-      <div class="cell-label">Web Automation</div>
-      <div class="cell-title">Browser Testing</div>
-      <div class="tag-cloud">
-        <span class="tag-pill">Playwright</span>
-        <span class="tag-pill">TypeScript</span>
-        <span class="tag-pill">Selenium</span>
-        <span class="tag-pill">Page Object Model</span>
+  <section class="block" id="skills" style="padding-top:0">
+    <div class="wrap">
+      <div class="block-head reveal">
+        <h2 class="block-title">What I test with</h2>
+        <p class="block-intro">Pick a layer of the stack to see the tools I use there.</p>
+      </div>
+      <div class="reveal">
+        <div class="tabs" role="tablist" aria-label="Skill areas">
+          <button class="tab" role="tab" id="tab-web" aria-controls="p-web" aria-selected="true">Web</button>
+          <button class="tab" role="tab" id="tab-mobile" aria-controls="p-mobile" aria-selected="false" tabindex="-1">Mobile</button>
+          <button class="tab" role="tab" id="tab-api" aria-controls="p-api" aria-selected="false" tabindex="-1">API</button>
+          <button class="tab" role="tab" id="tab-tools" aria-controls="p-tools" aria-selected="false" tabindex="-1">Tools and process</button>
+          <button class="tab" role="tab" id="tab-domain" aria-controls="p-domain" aria-selected="false" tabindex="-1">Healthtech</button>
+        </div>
+        <div class="panel" role="tabpanel" id="p-web" aria-labelledby="tab-web">
+          <div><h3>Browser testing</h3><p>End-to-end suites for the doctor panels, structured with the Page Object Model so tests stay readable as the product grows.</p></div>
+          <div class="chips"><span class="chip">Playwright</span><span class="chip">TypeScript</span><span class="chip">Selenium</span><span class="chip">Page Object Model</span></div>
+        </div>
+        <div class="panel" role="tabpanel" id="p-mobile" aria-labelledby="tab-mobile" hidden>
+          <div><h3>iOS and Android</h3><p>One Appium framework driving both platforms for the patient app, the doctor app, and Locum.</p></div>
+          <div class="chips"><span class="chip">Appium</span><span class="chip">Python</span><span class="chip">iOS XCUITest</span><span class="chip">Android UIAutomator2</span></div>
+        </div>
+        <div class="panel" role="tabpanel" id="p-api" aria-labelledby="tab-api" hidden>
+          <div><h3>Backend coverage</h3><p>Auth, pagination, and edge cases checked at the API layer, where bugs are cheapest to catch.</p></div>
+          <div class="chips"><span class="chip">Pytest</span><span class="chip">Requests</span><span class="chip">Postman</span></div>
+        </div>
+        <div class="panel" role="tabpanel" id="p-tools" aria-labelledby="tab-tools" hidden>
+          <div><h3>Workflow</h3><p>Tracking, debugging network traffic, and keeping the team in the loop.</p></div>
+          <div class="chips"><span class="chip">Git and GitHub</span><span class="chip">Jira</span><span class="chip">Charles Proxy</span><span class="chip">Notion</span></div>
+        </div>
+        <div class="panel" role="tabpanel" id="p-domain" aria-labelledby="tab-domain" hidden>
+          <div><h3>Healthtech</h3><p>Flows where a failure means a missed consultation or a broken payment, not just a bad review.</p></div>
+          <div class="chips"><span class="chip">Midtrans payment</span><span class="chip">IFG chat</span><span class="chip">CME systems</span></div>
+        </div>
       </div>
     </div>
-    <div class="cell c-6">
-      <div class="cell-label">Mobile Automation</div>
-      <div class="cell-title">iOS & Android</div>
-      <div class="tag-cloud">
-        <span class="tag-pill">Appium</span>
-        <span class="tag-pill">Python</span>
-        <span class="tag-pill">iOS XCUITest</span>
-        <span class="tag-pill">Android UIAutomator2</span>
-      </div>
-    </div>
-    <div class="cell cell-lime c-4">
-      <div class="cell-label">API Testing</div>
-      <div class="cell-title">Backend Coverage</div>
-      <div class="tag-cloud">
-        <span class="tag-pill">Pytest</span>
-        <span class="tag-pill">Requests</span>
-        <span class="tag-pill">Postman</span>
-      </div>
-    </div>
-    <div class="cell c-4">
-      <div class="cell-label">Tools & Process</div>
-      <div class="cell-title">Workflow</div>
-      <div class="tag-cloud">
-        <span class="tag-pill">Git / GitHub</span>
-        <span class="tag-pill">Jira</span>
-        <span class="tag-pill">Charles Proxy</span>
-        <span class="tag-pill">Notion</span>
-      </div>
-    </div>
-    <div class="cell cell-orange c-4">
-      <div class="cell-label">Domain</div>
-      <div class="cell-title">Healthtech</div>
-      <div class="tag-cloud">
-        <span class="tag-pill">Midtrans Payment</span>
-        <span class="tag-pill">IFG Chat</span>
-        <span class="tag-pill">CME Systems</span>
-      </div>
-    </div>
-  </div>
+  </section>
 
   <!-- EXPERIENCE -->
-  <p class="section-label" id="experience">Experience</p>
-  <div class="bento">
-    <div class="cell c-12">
-      <div class="cell-label">Work history</div>
-      <div class="exp-item">
-        <div class="exp-meta">Jun 2025 - Present · Full-time</div>
-        <div class="exp-role">QA Engineer</div>
-        <div class="exp-co">Yesdok Healthtech · Sole QA, 5 products end-to-end</div>
-        <div class="cell-body" style="margin-top:0.75rem">
-          Responsible for quality across Panel Dokter Spesialis, Panel Dokter 24 Jam (web), Yesdok App, Yesdok for Doctor, and Locum (mobile, Essex Bio Singapore partnership). Built the entire automation framework from scratch: Playwright for web, Appium for mobile, Pytest for API. Investigated high-severity bugs including PHP memory exhaustion on the chat history endpoint caused by missing pagination.
-        </div>
-        <div class="tag-cloud" style="margin-top:0.75rem">
-          <span class="tag-pill">Playwright</span>
-          <span class="tag-pill">Appium</span>
-          <span class="tag-pill">Pytest</span>
-          <span class="tag-pill">TypeScript</span>
-          <span class="tag-pill">Python</span>
-          <span class="tag-pill">Postman</span>
-          <span class="tag-pill">Midtrans</span>
-        </div>
+  <section class="block" id="experience" style="padding-top:0">
+    <div class="wrap">
+      <div class="block-head reveal">
+        <h2 class="block-title">Experience</h2>
+        <p class="block-intro">Short history, a lot of ownership.</p>
       </div>
-      <div class="exp-item">
-        <div class="exp-meta">2020 - 2024 · Student</div>
-        <div class="exp-role">B.Eng, Informatics Engineering</div>
-        <div class="exp-co">UNIKOM (Universitas Komputer Indonesia)</div>
-        <div class="cell-body" style="margin-top:0.75rem">
-          Studied software engineering fundamentals, algorithms, databases, and system design. Built the foundation that directly fuels a professional QA career.
+      <div class="timeline reveal">
+        <div class="tl-item current">
+          <div class="tl-when">Jun 2025 to present, full-time</div>
+          <div class="tl-role">QA Engineer</div>
+          <div class="tl-co">Yesdok Healthtech, sole QA for five products</div>
+          <p class="tl-body">I own quality across web and mobile. I built the automation framework from scratch, with Playwright for web, Appium for mobile, and Pytest for API, and I investigate high-severity bugs, like a PHP memory exhaustion on the chat history endpoint caused by missing pagination.</p>
+          <div class="tl-products">
+            <span>Panel Dokter Spesialis</span><span>Panel Dokter 24 Jam</span><span>Yesdok App</span><span>Yesdok for Doctor</span><span>Locum (Essex Bio Singapore)</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-when">2020 to 2024</div>
+          <div class="tl-role">B.Eng, Informatics Engineering</div>
+          <div class="tl-co">UNIKOM (Universitas Komputer Indonesia)</div>
+          <p class="tl-body">Software engineering fundamentals, algorithms, databases, and system design: the foundation behind my QA work.</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- PROJECTS -->
-  <p class="section-label" id="projects">Projects</p>
-  <div class="bento">
-    <div class="cell cell-ink c-12">
-      <div class="cell-label">Selected work</div>
-      <div class="proj-list">
-        <div class="proj-item">
-          <div>
-            <div class="proj-name">yesdok-automation</div>
-            <div class="proj-sub">Unified monorepo · Playwright + Appium + Pytest · All 5 products</div>
+  <section class="block" id="projects" style="padding-top:0">
+    <div class="wrap">
+      <div class="block-head reveal">
+        <h2 class="block-title">Selected work</h2>
+        <p class="block-intro">Open a project to see what's inside.</p>
+      </div>
+      <div class="projects reveal">
+        <details class="proj" open>
+          <summary>
+            <div><div class="proj-name">yesdok-automation</div><div class="proj-sub">Unified monorepo covering all five products</div></div>
+            <span class="badge active">Active</span><span class="proj-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="proj-detail">
+            One repository for every automated check at Yesdok, so web, mobile, and API tests share config, fixtures, and reporting.
+            <ul><li>Playwright and TypeScript for the doctor web panels</li><li>Appium and Python for the iOS and Android apps</li><li>Pytest for the API layer</li></ul>
           </div>
-          <span class="proj-badge badge-active">Active</span>
-        </div>  
-        <div class="proj-item">
-          <div>
-            <div class="proj-name">API Test Coverage Suite</div>
-            <div class="proj-sub">Auth, pagination, edge cases · yesdok.com staging</div>
+        </details>
+        <details class="proj">
+          <summary>
+            <div><div class="proj-name">API test coverage suite</div><div class="proj-sub">Staging API for yesdok.com</div></div>
+            <span class="badge active">Active</span><span class="proj-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="proj-detail">
+            Covers authentication, pagination, and edge cases, the kind of checks that caught the chat history memory exhaustion bug before it hit production traffic.
           </div>
-          <span class="proj-badge badge-active">Active</span>
-        </div>
-        <div class="proj-item">
-          <div>
-            <div class="proj-name">QA Monitoring System</div>
-            <div class="proj-sub">Telegram real-time alerts · TradingView integration</div>
+        </details>
+        <details class="proj">
+          <summary>
+            <div><div class="proj-name">QA monitoring system</div><div class="proj-sub">Real-time alerts over Telegram</div></div>
+            <span class="badge building">Building</span><span class="proj-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="proj-detail">
+            Sends test results and failures straight to Telegram as they happen, with a TradingView integration, so nobody has to dig through CI logs to know something broke.
           </div>
-          <span class="proj-badge badge-wip">Building</span>
-        </div>
-        <div class="proj-item">
-          <div>
-            <div class="proj-name">Mobile QA: Locum App</div>
-            <div class="proj-sub">Essex Bio Singapore · Doctor scheduling, shift mgmt & CME flows</div>
+        </details>
+        <details class="proj">
+          <summary>
+            <div><div class="proj-name">Mobile QA for the Locum app</div><div class="proj-sub">Essex Bio Singapore partnership</div></div>
+            <span class="badge done">Done</span><span class="proj-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="proj-detail">
+            Tested doctor scheduling, shift management, and CME flows on iOS and Android through to release.
           </div>
-          <span class="proj-badge badge-done">Done</span>
-        </div>
+        </details>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- CONTACT -->
-  <p class="section-label" id="contact">Contact</p>
-  <div class="contact-wrap">
-    <div class="contact-card cell-ink">
-      <div class="contact-left">
-        <div class="cell-label" style="opacity:0.45;color:#fff">Open to opportunities</div>
-        <div class="contact-headline">Let's work<br>together.</div>
-        <p class="contact-sub">QA Engineer looking for full-time or contract roles in healthtech, fintech, or any product where quality actually matters.</p>
-      </div>
-      <div class="contact-right">
-        <a href="mailto:bayuafriyadi5@gmail.com" class="contact-link">
-          <span class="contact-link-label">Email</span>
-          <span class="contact-link-value">bayuafriyadi5@gmail.com ↗</span>
-        </a>
-        <a href="https://github.com/bayuafriyadi5" target="_blank" rel="noopener" class="contact-link">
-          <span class="contact-link-label">GitHub</span>
-          <span class="contact-link-value">github.com/bayuafriyadi5 ↗</span>
-        </a>
-        <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="contact-link">
-          <span class="contact-link-label">LinkedIn</span>
-          <span class="contact-link-value">bayu-afriyadi ↗</span>
-        </a>
-        <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener" class="contact-cv">Download CV ↓</a>
+  <section class="block" id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact reveal">
+        <div style="position:relative;z-index:1">
+          <h2>Let's work together.</h2>
+          <p>Looking for full-time or contract QA roles in healthtech, fintech, or any product where quality actually matters.</p>
+          <a href="https://drive.google.com/file/d/1RhqMn_FWMUBsvIwgMGipbebT6oyAfmuD/view?usp=sharing" target="_blank" rel="noopener" class="btn">Download CV</a>
+        </div>
+        <div class="contact-links">
+          <div class="c-row">
+            <span>Email</span>
+            <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end">
+              <a href="mailto:bayuafriyadi5@gmail.com" style="color:#fff">bayuafriyadi5@gmail.com</a>
+              <button class="copy-btn" id="copyEmail" type="button">Copy</button>
+            </span>
+          </div>
+          <a class="c-row" href="https://github.com/bayuafriyadi5" target="_blank" rel="noopener"><span>GitHub</span><span>github.com/bayuafriyadi5 ↗</span></a>
+          <a class="c-row" href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener"><span>LinkedIn</span><span>bayu-afriyadi ↗</span></a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
 </main>
 
 <footer>
-  <span>Bayu Afriyadi · QA Engineer · 2026</span>
-  <div class="footer-links">
-    <a href="mailto:bayuafriyadi5@gmail.com" class="footer-link">bayuafriyadi5@gmail.com</a>
-    <a href="https://github.com/bayuafriyadi5" target="_blank" rel="noopener" class="footer-link">GitHub</a>
-    <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+  <div class="wrap foot">
+    <span>Bayu Afriyadi, QA Engineer, 2026</span>
+    <nav aria-label="Footer">
+      <a href="mailto:bayuafriyadi5@gmail.com">Email</a>
+      <a href="https://github.com/bayuafriyadi5" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/bayu-afriyadi-206741154/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
   </div>
 </footer>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-// Custom cursor
-const cur = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-document.addEventListener('mousemove', e => {
-  cur.style.left = (e.clientX - 6) + 'px';
-  cur.style.top = (e.clientY - 6) + 'px';
-  ring.style.left = (e.clientX - 18) + 'px';
-  ring.style.top = (e.clientY - 18) + 'px';
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Test runner ---------- */
+const tests = [
+  { name: 'is a QA engineer at a healthtech startup', target: '#about', err: "expected role 'QA Engineer', received 'undefined'" },
+  { name: 'automates web flows with Playwright', target: '#skills', tab: 'tab-web', err: "locator('#login') resolved to 0 elements" },
+  { name: 'automates iOS and Android with Appium', target: '#skills', tab: 'tab-mobile', err: 'NoSuchElementError: button "Book consultation"' },
+  { name: 'covers the API layer with Pytest', target: '#skills', tab: 'tab-api', err: 'GET /chat/history returned 500 (memory exhausted)' },
+  { name: 'owns quality for 5 products solo', target: '#experience', err: 'expected 5 products, received 4' },
+  { name: 'ships automation that runs every day', target: '#projects', err: 'Timeout 30000ms exceeded' },
+  { name: 'is open to new opportunities', target: '#contact', err: "expected status 'open', received 'busy'" },
+];
+const list = document.getElementById('runnerList');
+const summary = document.getElementById('summary');
+const rerunBtn = document.getElementById('rerunBtn');
+const bugBtn = document.getElementById('bugBtn');
+
+tests.forEach((t, i) => {
+  const li = document.createElement('li');
+  li.innerHTML = `<button class="t" type="button" data-i="${i}">
+      <span class="t-icon" aria-hidden="true"></span>
+      <span class="t-name">${t.name}</span>
+      <span class="t-time"></span>
+    </button>
+    <div class="t-err" role="alert"></div>`;
+  list.appendChild(li);
+  li.querySelector('.t').addEventListener('click', () => {
+    if (t.tab) selectTab(document.getElementById(t.tab));
+    document.querySelector(t.target).scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
 });
-document.querySelectorAll('a,button,.cell').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cur.style.transform = 'scale(2)';
-    ring.style.width = '48px';
-    ring.style.height = '48px';
-    ring.style.marginLeft = '-6px';
-    ring.style.marginTop = '-6px';
+const rows = [...list.querySelectorAll('.t')];
+const errs = [...list.querySelectorAll('.t-err')];
+
+const wait = ms => new Promise(r => setTimeout(r, reduceMotion ? 0 : ms));
+let running = false;
+
+async function run(bugIndex = -1) {
+  if (running) return;
+  running = true;
+  rerunBtn.disabled = bugBtn.disabled = true;
+  rows.forEach(r => { r.className = 't'; r.querySelector('.t-time').textContent = ''; });
+  errs.forEach(e => { e.className = 't-err'; e.innerHTML = ''; });
+  let passed = 0, failed = 0, total = 0;
+  summary.textContent = 'running…';
+
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    row.classList.add('running');
+    const ms = 140 + Math.round(Math.random() * 260);
+    await wait(ms);
+    total += ms;
+    row.classList.remove('running');
+    row.querySelector('.t-time').textContent = ms + 'ms';
+    if (i === bugIndex) {
+      row.classList.add('failed'); failed++;
+      errs[i].innerHTML = `Error: ${tests[i].err}`;
+      errs[i].classList.add('show');
+    } else {
+      row.classList.add('done'); passed++;
+    }
+    renderSummary(passed, failed, total);
+  }
+
+  if (bugIndex >= 0) {
+    await wait(1400);
+    errs[bugIndex].innerHTML += `<br><span class="patched">↳ patched by Bayu, retry passed</span>`;
+    rows[bugIndex].classList.replace('failed', 'done');
+    renderSummary(passed + 1, 0, total + 210, true);
+  }
+  running = false;
+  rerunBtn.disabled = bugBtn.disabled = false;
+}
+function renderSummary(p, f, ms, retried) {
+  summary.innerHTML = `<span class="p">${p} passed</span>` +
+    (f ? `, <span class="f">${f} failed</span>` : '') +
+    (retried ? ', 1 flaky (retried)' : '') +
+    ` in ${(ms / 1000).toFixed(1)}s`;
+}
+rerunBtn.addEventListener('click', () => run());
+bugBtn.addEventListener('click', () => run(Math.floor(Math.random() * tests.length)));
+setTimeout(run, reduceMotion ? 0 : 600);
+
+/* ---------- Skill tabs ---------- */
+const tabs = [...document.querySelectorAll('.tab')];
+function selectTab(tab) {
+  tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute('aria-selected', on);
+    t.tabIndex = on ? 0 : -1;
+    const panel = document.getElementById(t.getAttribute('aria-controls'));
+    panel.hidden = !on;
+    if (on) { panel.classList.remove('enter'); void panel.offsetWidth; panel.classList.add('enter'); }
   });
-  el.addEventListener('mouseleave', () => {
-    cur.style.transform = 'scale(1)';
-    ring.style.width = '36px';
-    ring.style.height = '36px';
-    ring.style.marginLeft = '0';
-    ring.style.marginTop = '0';
+}
+tabs.forEach((t, i) => {
+  t.addEventListener('click', () => selectTab(t));
+  t.addEventListener('keydown', e => {
+    let n = null;
+    if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+    if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+    if (n) { e.preventDefault(); selectTab(n); n.focus(); }
   });
 });
 
-// Staggered cell reveal – bidirectional
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const cell = entry.target;
-    const bento = cell.closest('.bento');
-    const siblings = bento ? [...bento.querySelectorAll('.cell')] : [cell];
-    const idx = siblings.indexOf(cell);
-    if (entry.isIntersecting) {
-      cell.style.setProperty('--reveal-delay', (idx * 100) + 'ms');
-      cell.classList.add('visible');
-    } else {
-      cell.style.setProperty('--reveal-delay', '0ms');
-      cell.classList.remove('visible');
-    }
+/* ---------- Copy email ---------- */
+const toast = document.getElementById('toast');
+let toastTimer;
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+document.getElementById('copyEmail').addEventListener('click', async () => {
+  const email = 'bayuafriyadi5@gmail.com';
+  try {
+    await navigator.clipboard.writeText(email);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = email; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); ta.remove();
+  }
+  showToast('Email copied');
+});
+
+/* ---------- Nav: scroll progress, border, active link ---------- */
+const nav = document.getElementById('nav');
+const progress = document.getElementById('progress');
+function onScroll() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+  nav.classList.toggle('scrolled', scrollY > 8);
+}
+addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+const navLinks = [...document.querySelectorAll('.nav-links a')];
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+}, { rootMargin: '-45% 0px -50% 0px' });
+document.querySelectorAll('section.block').forEach(s => spy.observe(s));
 
-document.querySelectorAll('.cell').forEach(el => revealObserver.observe(el));
+/* ---------- Reveal once ---------- */
+const revealer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealer.observe(el));
 
-// Hero entrance – bidirectional
-const heroEl = document.querySelector('.hero');
-const heroObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      heroEl.classList.remove('hero-out');
-      heroEl.classList.add('hero-in');
-    } else {
-      heroEl.classList.remove('hero-in');
-      heroEl.classList.add('hero-out');
-      // strip out-class after exit transition so next entry is clean
-      setTimeout(() => heroEl.classList.remove('hero-out'), 400);
-    }
-  });
-}, { threshold: 0.05 });
-heroObserver.observe(heroEl);
-
-// Hamburger menu
+/* ---------- Mobile menu ---------- */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-hamburger?.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-});
-mobileMenu?.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-  });
-});
-
-// Smooth nav scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-  });
-});
+function setMenu(open) {
+  hamburger.classList.toggle('open', open);
+  mobileMenu.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+}
+hamburger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 </script>
 </body>
 </html>
