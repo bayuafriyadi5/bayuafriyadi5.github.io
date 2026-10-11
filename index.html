@@ -303,20 +303,21 @@ section.block{padding:clamp(90px,12vw,150px) 0}
 .tl-products{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 
 /* projects — sticky stack */
-.stack{margin-top:64px;display:flex;flex-direction:column;gap:28px}
+.stack{margin-top:64px;display:flex;flex-direction:column;gap:30vh}
+.stack::after{content:"";height:20vh;flex-shrink:0}
 .proj{
-  position:sticky;top:110px;
-  display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;
-  min-height:360px;padding:clamp(28px,4vw,48px);border-radius:28px;
+  position:sticky;top:100px;
+  display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start;
+  min-height:360px;padding:22px clamp(28px,4vw,48px) clamp(28px,4vw,48px);border-radius:28px;
   border:1px solid var(--line);
   background:linear-gradient(160deg,#0E2160,#081438 60%);
   box-shadow:0 -20px 60px -20px rgba(0,0,0,.6);
   transform-origin:center top;
 }
-.proj:nth-child(2){top:130px;background:linear-gradient(160deg,#123089,#0A1A4A 60%)}
-.proj:nth-child(3){top:150px;background:linear-gradient(160deg,#1A3FD1,#0E2470 60%)}
-.proj:nth-child(4){top:170px;background:linear-gradient(160deg,#2F6BFF,#1532A8 60%)}
-.proj-top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.proj:nth-child(2){top:164px;background:linear-gradient(160deg,#123089,#0A1A4A 60%)}
+.proj:nth-child(3){top:228px;background:linear-gradient(160deg,#1A3FD1,#0E2470 60%)}
+.proj:nth-child(4){top:292px;background:linear-gradient(160deg,#2F6BFF,#1532A8 60%)}
+.proj-top{display:flex;align-items:center;gap:12px;margin-bottom:44px}
 .badge{font-family:var(--mono);font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff}
 .badge.active::before{content:"● ";color:var(--pass)}
 .badge.building::before{content:"◐ ";color:var(--sky)}
@@ -324,7 +325,7 @@ section.block{padding:clamp(90px,12vw,150px) 0}
 .proj-idx{font-family:var(--mono);font-size:13px;color:rgba(207,224,255,.6)}
 .proj h3{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.05}
 .proj p{color:rgba(207,224,255,.8);margin-top:14px;max-width:46ch}
-.proj ul{list-style:none;display:grid;gap:10px}
+.proj ul{list-style:none;display:grid;gap:10px;margin-top:70px}
 .proj li{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:rgba(5,11,31,.35);border:1px solid rgba(207,224,255,.12);font-size:15px}
 .proj li::before{content:"✓";color:var(--pass);font-family:var(--mono);font-weight:600}
 
@@ -476,6 +477,10 @@ nav.top.hide{transform:translate(-50%,-130%)}
   .stat:nth-child(2){border-right:0}
   .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .proj{position:relative;top:auto!important;min-height:0}
+  .stack{gap:20px}
+  .stack::after{display:none}
+  .proj-top{margin-bottom:18px}
+  .proj ul{margin-top:0}
 }
 @media (max-width:760px){
   .nav-links,.nav-right .cta-pill{display:none}
@@ -1130,8 +1135,10 @@ function initScroll(){
     const cards = $$('.proj');
     cards.forEach((c, i) => {
       if (i === cards.length - 1) return;
-      gsap.to(c, { scale: .92 + i * .015, filter: 'brightness(.55)', ease: 'none',
-        scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top 25%', scrub: true } });
+      // only dim once the next card is actually sliding over this one
+      const nextTop = parseFloat(getComputedStyle(cards[i + 1]).top) || 100;
+      gsap.to(c, { scale: .96, filter: 'brightness(.75)', ease: 'none',
+        scrollTrigger: { trigger: cards[i + 1], start: 'top 55%', end: `top ${nextTop}px`, scrub: true } });
     });
   });
   // hero parallax out
