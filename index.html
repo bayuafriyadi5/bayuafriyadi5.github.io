@@ -25,7 +25,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -41,8 +41,8 @@
   --muted:#8A9BC4;
   --pass:#3DDC97;
   --fail:#FF6B7A;
-  --display:'Syne',sans-serif;
-  --body:'Manrope',sans-serif;
+  --display:'Plus Jakarta Sans',sans-serif;
+  --body:'Plus Jakarta Sans',sans-serif;
   --mono:'JetBrains Mono',monospace;
   --wrap:1200px;
   --gutter:clamp(16px,4vw,48px);
@@ -79,7 +79,7 @@ main,nav,footer{position:relative;z-index:1}
 #intro .line{font-size:14px;margin-bottom:6px;opacity:0;transform:translateY(6px);transition:all .3s}
 #intro .line.on{opacity:1;transform:none}
 #intro .line b{color:var(--pass);font-weight:600}
-#intro .pct{font-family:var(--display);font-weight:800;color:var(--text);font-size:clamp(4rem,14vw,11rem);line-height:.9;letter-spacing:-0.04em;margin-top:12px}
+#intro .pct{font-family:var(--display);font-weight:800;color:var(--text);font-size:clamp(4rem,14vw,11rem);line-height:.9;letter-spacing:-0.03em;margin-top:12px}
 #intro .bar{height:3px;background:var(--line);margin-top:20px;overflow:hidden}
 #intro .bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--sky))}
 
@@ -141,8 +141,7 @@ nav.top{
 .hello::before{content:"";width:28px;height:1px;background:var(--sky)}
 .name{
   font-family:var(--display);font-weight:800;
-  font-size:min(8.6vw,7.6rem);line-height:.92;letter-spacing:-0.04em;
-  text-transform:uppercase;
+  font-size:clamp(3.4rem,10vw,8.5rem);line-height:.98;letter-spacing:-0.035em;
 }
 .name .row{display:block;overflow:hidden;padding-bottom:.06em;white-space:nowrap}
 .name .ch{display:inline-block;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1)}
@@ -200,7 +199,7 @@ nav.top{
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stat{padding:36px 24px;border-right:1px solid var(--line)}
 .stat:last-child{border-right:0}
-.stat b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,5vw,4rem);line-height:1;letter-spacing:-0.04em}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,5vw,4rem);line-height:1;letter-spacing:-0.03em}
 .stat b small{font-size:.45em;color:var(--sky);margin-left:2px}
 .stat span{color:var(--muted);font-size:15px}
 
@@ -208,7 +207,7 @@ nav.top{
 section.block{padding:clamp(90px,12vw,150px) 0}
 .kicker{font-family:var(--mono);font-size:14px;color:var(--sky);margin-bottom:18px;display:flex;align-items:center;gap:10px}
 .kicker::before{content:"//";color:var(--blue)}
-.title{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,4.8rem);line-height:.95;letter-spacing:-0.04em;max-width:16ch}
+.title{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,5.4vw,4.4rem);line-height:1.05;letter-spacing:-0.03em;max-width:16ch}
 .lead{color:var(--muted);font-size:1.1rem;max-width:52ch;margin-top:18px}
 
 /* about — word highlight */
@@ -323,7 +322,7 @@ section.block{padding:clamp(90px,12vw,150px) 0}
 .badge.building::before{content:"◐ ";color:var(--sky)}
 .badge.done::before{content:"✓ ";color:var(--ice)}
 .proj-idx{font-family:var(--mono);font-size:13px;color:rgba(207,224,255,.6)}
-.proj h3{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-0.035em;line-height:1}
+.proj h3{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.05}
 .proj p{color:rgba(207,224,255,.8);margin-top:14px;max-width:46ch}
 .proj ul{list-style:none;display:grid;gap:10px}
 .proj li{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:rgba(5,11,31,.35);border:1px solid rgba(207,224,255,.12);font-size:15px}
@@ -333,10 +332,10 @@ section.block{padding:clamp(90px,12vw,150px) 0}
 .contact{text-align:center;padding:clamp(110px,14vw,180px) 0}
 .contact .kicker{justify-content:center}
 .contact h2{
-  font-family:var(--display);font-weight:800;text-transform:uppercase;
-  font-size:min(8.4vw,6.8rem);line-height:.95;letter-spacing:-0.04em;white-space:nowrap;
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(3rem,9vw,7.5rem);line-height:1;letter-spacing:-0.035em;white-space:nowrap;
 }
-.contact h2 .outline{color:transparent;-webkit-text-stroke:1.5px var(--sky)}
+.contact h2 .outline{color:transparent;-webkit-text-stroke:2px var(--sky)}
 .contact .lead{margin:24px auto 0}
 .contact-ctas{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:44px}
 .socials{display:flex;justify-content:center;gap:28px;margin-top:40px;flex-wrap:wrap}
@@ -369,8 +368,8 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-s
   .skills{grid-template-columns:1fr}
   .skills .card{min-height:0}
   .hero-hint{left:var(--gutter);right:auto;bottom:24px}
-  .name{font-size:11.6vw}
-  .contact h2{font-size:9.8vw}
+  .name{font-size:21vw}
+  .contact h2{font-size:17vw}
   .scroll-cue{display:none}
   .stat{padding:26px 16px}
   .t-time{display:none}
