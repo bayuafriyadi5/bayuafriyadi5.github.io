@@ -353,6 +353,121 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-s
 /* generic reveal (driven by GSAP; visible by default without it) */
 .js-anim .rv{opacity:0;transform:translateY(40px)}
 
+/* ── EXTRA MOTION ── */
+/* custom cursor */
+.cursor,.cursor-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:400;border-radius:50%;opacity:0;transition:opacity .3s}
+.cursor{width:8px;height:8px;margin:-4px 0 0 -4px;background:var(--sky);box-shadow:0 0 12px var(--sky)}
+.cursor-ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1.5px solid rgba(127,178,255,.55);transition:opacity .3s,width .3s,height .3s,margin .3s,border-color .3s,background .3s}
+.has-cursor .cursor,.has-cursor .cursor-ring{opacity:1}
+.cursor-ring.hover{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(77,141,255,.12);border-color:var(--sky)}
+.cursor-ring.target{width:54px;height:54px;margin:-27px 0 0 -27px;border-color:var(--fail);background:rgba(255,107,122,.12)}
+.cursor-ring.target::before,.cursor-ring.target::after{content:"";position:absolute;background:var(--fail);left:50%;top:50%}
+.cursor-ring.target::before{width:1.5px;height:70%;transform:translate(-50%,-50%)}
+.cursor-ring.target::after{height:1.5px;width:70%;transform:translate(-50%,-50%)}
+.cursor-ring.down{transform:scale(.8)}
+@media (pointer:fine){.has-cursor, .has-cursor a, .has-cursor button, .has-cursor .bug{cursor:none}}
+
+/* hero entrance stagger */
+.hello,.role,.hero-ctas{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.ready .hello{opacity:1;transform:none;transition-delay:.05s}
+.ready .role{opacity:1;transform:none;transition-delay:.7s}
+.ready .hero-ctas{opacity:1;transform:none;transition-delay:.85s}
+.hero-hint,.scroll-cue{opacity:0;transition:opacity 1s 1.4s}
+.ready .hero-hint,.ready .scroll-cue{opacity:1}
+/* playful letters after intro */
+.name.live .row{overflow:visible}
+.name.live .ch{transition:transform .5s cubic-bezier(.34,1.56,.64,1);transition-delay:0s!important}
+.name.live .ch:hover{transform:translateY(-14%) rotate(-6deg)}
+
+/* floating tech chips */
+.floaters{position:absolute;inset:0;z-index:1;pointer-events:none}
+.floater{
+  position:absolute;display:flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ice);
+  padding:10px 14px;border-radius:12px;white-space:nowrap;
+  background:rgba(11,23,56,.7);border:1px solid var(--line);backdrop-filter:blur(6px);
+  box-shadow:0 20px 40px -20px rgba(47,107,255,.6);
+  opacity:0;transition:opacity 1s,transform .9s cubic-bezier(.16,1,.3,1);
+}
+.ready .floater{opacity:1}
+.floater i{width:8px;height:8px;border-radius:50%;background:var(--pass);box-shadow:0 0 8px var(--pass)}
+.floater .bob{display:flex;align-items:center;gap:8px;animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-12px)}}
+
+/* button shine */
+.btn{overflow:hidden;isolation:isolate}
+.btn::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
+  transform:translateX(-120%);transition:transform .7s cubic-bezier(.16,1,.3,1);
+}
+.btn:hover::after{transform:translateX(120%)}
+.btn-primary{animation:pulseGlow 3s ease-in-out infinite}
+@keyframes pulseGlow{50%{box-shadow:0 10px 44px -4px rgba(77,141,255,1),inset 0 0 0 1px rgba(207,224,255,.3)}}
+
+/* nav hide on scroll */
+nav.top{transition:transform .45s cubic-bezier(.16,1,.3,1),background .3s}
+nav.top.hide{transform:translate(-50%,-130%)}
+
+/* split titles */
+.wl{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.wi{display:inline-block}
+
+/* kicker line draw */
+.kicker::after{content:"";height:1px;width:60px;background:linear-gradient(90deg,var(--blue),transparent);transform-origin:left}
+.js-anim .kicker::after{transform:scaleX(0);transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.js-anim .kicker.in::after{transform:none}
+
+/* floating skill icons */
+.skill-ico{animation:iconFloat 4s ease-in-out infinite}
+.skills .card:nth-child(2) .skill-ico{animation-delay:-1s}
+.skills .card:nth-child(3) .skill-ico{animation-delay:-2s}
+.skills .card:nth-child(4) .skill-ico{animation-delay:-3s}
+.skills .card:nth-child(5) .skill-ico{animation-delay:-1.5s}
+@keyframes iconFloat{50%{transform:translateZ(30px) translateY(-8px) rotate(-4deg)}}
+
+/* HOW I WORK — horizontal pinned */
+.process{position:relative;padding:clamp(90px,12vw,150px) 0 0;overflow:hidden}
+.process-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.process-bar{width:220px;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.process-bar span{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--blue),var(--sky));transform-origin:left;transform:scaleX(0)}
+.track{
+  display:flex;gap:24px;width:max-content;will-change:transform;
+  padding:56px var(--gutter) clamp(90px,12vw,150px) max(var(--gutter),calc((100vw - var(--wrap)) / 2 + var(--gutter)));
+}
+.step{
+  position:relative;width:min(420px,78vw);min-height:360px;flex-shrink:0;
+  padding:32px;border-radius:24px;border:1px solid var(--line);overflow:hidden;
+  background:linear-gradient(160deg,rgba(14,33,96,.85),rgba(8,20,56,.85));
+  display:flex;flex-direction:column;
+}
+.step-num{
+  font-family:var(--display);font-weight:800;font-size:7rem;line-height:.8;letter-spacing:-0.04em;
+  color:transparent;-webkit-text-stroke:1.5px rgba(127,178,255,.35);margin-bottom:auto;
+}
+.step h3{font-family:var(--display);font-weight:800;font-size:2rem;letter-spacing:-0.03em;margin:28px 0 8px}
+.step p{color:var(--muted)}
+.step .orb{position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(closest-side,rgba(77,141,255,.5),transparent);animation:orb 6s ease-in-out infinite}
+.step:nth-child(even) .orb{animation-delay:-3s}
+@keyframes orb{50%{transform:translate(-30px,30px) scale(1.2)}}
+.step.loop{background:linear-gradient(160deg,#2F6BFF,#1532A8)}
+.step.loop p{color:var(--ice)}
+.step.loop .step-num{-webkit-text-stroke-color:rgba(255,255,255,.5)}
+
+/* contact fill text */
+.contact h2 .outline{
+  background:linear-gradient(90deg,var(--blue),var(--sky)) no-repeat 0 0 / 0% 100%;
+  -webkit-background-clip:text;background-clip:text;
+}
+
+@media (max-width:960px){
+  .floaters{display:none}
+  .track{flex-direction:column;width:auto;padding:40px var(--gutter) 90px}
+  .step{width:auto;min-height:0}
+  .step-num{font-size:4.5rem}
+  .process-bar{display:none}
+}
+
 @media (max-width:960px){
   .about-cols,.demo,.proj{grid-template-columns:1fr}
   .skills{grid-template-columns:1fr 1fr}
@@ -376,17 +491,16 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-s
   .runner{font-size:12.5px}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
-  .js-anim .rv{opacity:1;transform:none}
-  .name .ch{transform:none}
-  .about-big .w{opacity:1}
+  .process-bar{display:none}
 }
 </style>
 </head>
 <body class="loading">
 
 <div class="ambient" aria-hidden="true"><i></i><i></i></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 <div id="progress" aria-hidden="true"></div>
 
 <!-- intro -->
@@ -430,6 +544,13 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-s
   <!-- HERO -->
   <header class="hero" id="hero">
     <canvas id="dots" aria-hidden="true"></canvas>
+    <div class="floaters" id="floaters" aria-hidden="true">
+      <div class="floater" data-depth="1.2" style="right:12%;top:22%"><span class="bob"><i></i>playwright.test.ts</span></div>
+      <div class="floater" data-depth="0.7" style="right:30%;top:14%"><span class="bob" style="animation-delay:-1.2s"><i></i>appium · iOS</span></div>
+      <div class="floater" data-depth="1.6" style="right:6%;top:46%"><span class="bob" style="animation-delay:-2.4s"><i></i>pytest -q</span></div>
+      <div class="floater" data-depth="0.9" style="right:20%;top:64%"><span class="bob" style="animation-delay:-3.1s"><i></i>GET /api 200 OK</span></div>
+      <div class="floater" data-depth="1.3" style="right:34%;top:78%"><span class="bob" style="animation-delay:-.6s"><i></i>CI passed</span></div>
+    </div>
     <div id="bugLayer"></div>
     <div class="wrap hero-inner">
       <div class="hello">Hi, I'm</div>
@@ -538,6 +659,25 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-s
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section class="process" id="process">
+    <div class="wrap process-head">
+      <div>
+        <div class="kicker">how I work</div>
+        <h2 class="title">From idea to shipped, then again.</h2>
+      </div>
+      <div class="process-bar" aria-hidden="true"><span id="processBar"></span></div>
+    </div>
+    <div class="track" id="track">
+      <div class="step"><span class="orb"></span><div class="step-num">01</div><h3>Idea</h3><p>Start from the user's problem, not the feature list.</p></div>
+      <div class="step"><span class="orb"></span><div class="step-num">02</div><h3>PRD</h3><p>Write the scope, user flows, and acceptance criteria before a line of code.</p></div>
+      <div class="step"><span class="orb"></span><div class="step-num">03</div><h3>Build</h3><p>Track the build closely and test early, while fixes are still cheap.</p></div>
+      <div class="step"><span class="orb"></span><div class="step-num">04</div><h3>Automated tests</h3><p>Playwright, Appium, and Pytest run on every change. Red goes back to build.</p></div>
+      <div class="step"><span class="orb"></span><div class="step-num">05</div><h3>Ship</h3><p>Release when everything is green, with alerts watching production.</p></div>
+      <div class="step loop"><span class="orb"></span><div class="step-num">06</div><h3>Feedback</h3><p>Real usage becomes the next idea, and the loop starts over.</p></div>
     </div>
   </section>
 
@@ -650,7 +790,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-s
 <script>
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE = matchMedia('(pointer: fine)').matches;
-const HAS_GSAP = !!window.gsap && !RM;
+const HAS_GSAP = !!window.gsap;
 if (HAS_GSAP) { document.documentElement.classList.add('js-anim'); gsap.registerPlugin(ScrollTrigger); }
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -670,10 +810,48 @@ function startPage(){
   document.body.classList.remove('loading');
   document.body.classList.add('ready');
   startScramble(); initScroll();
+  setTimeout(() => $('.name').classList.add('live'), 1700);
 }
+
+/* ---------- custom cursor ---------- */
+if (FINE) {
+  document.documentElement.classList.add('has-cursor');
+  const dot = $('#cursor'), ring = $('#cursorRing');
+  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx}px,${my}px)`; });
+  (function loop(){ rx += (mx - rx) * .18; ry += (my - ry) * .18; ring.style.transform = `translate(${rx}px,${ry}px)`; requestAnimationFrame(loop); })();
+  addEventListener('pointerover', e => {
+    const bug = e.target.closest('.bug'), hot = e.target.closest('a,button,.card,.step');
+    ring.classList.toggle('target', !!bug);
+    ring.classList.toggle('hover', !bug && !!hot);
+  });
+  addEventListener('pointerdown', () => ring.classList.add('down'));
+  addEventListener('pointerup', () => ring.classList.remove('down'));
+  document.addEventListener('pointerleave', () => document.documentElement.classList.remove('has-cursor'));
+  document.addEventListener('pointerenter', () => document.documentElement.classList.add('has-cursor'));
+}
+
+/* ---------- floating chips parallax ---------- */
+if (FINE) {
+  const floaters = $$('.floater');
+  $('#hero').addEventListener('pointermove', e => {
+    const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+    floaters.forEach(f => { const d = +f.dataset.depth; f.style.transform = `translate(${x * d * -50}px,${y * d * -40}px)`; });
+  });
+}
+
+/* ---------- nav hide on scroll down ---------- */
+(function(){
+  const nav = $('#nav'); let last = scrollY;
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    if (y > last + 4 && y > 240 && !$('#mobileMenu').classList.contains('open')) nav.classList.add('hide');
+    else if (y < last - 4) nav.classList.remove('hide');
+    last = y;
+  }, { passive: true });
+})();
 (function intro(){
   const el = $('#intro');
-  if (RM) { el.remove(); startPage(); return; }
   const lines = $$('#intro .line'), pct = $('#pct'), bar = $('#bar');
   lines.forEach((l, i) => setTimeout(() => l.classList.add('on'), 120 + i * 220));
   const t0 = performance.now(), dur = 1300;
@@ -689,7 +867,6 @@ function startPage(){
 function startScramble(){
   const el = $('#scramble'); const words = ['hunts bugs','automates tests','ships quality','writes PRDs','breaks things'];
   const chars = '!<>-_\\/[]{}=+*^?#01'; let wi = 0;
-  if (RM) return;
   function to(word){
     const from = el.textContent, len = Math.max(from.length, word.length); let f = 0;
     const q = [...Array(len)].map((_, i) => ({ from: from[i] || '', to: word[i] || '', start: Math.floor(Math.random()*12), end: Math.floor(Math.random()*12) + 14 }));
@@ -732,9 +909,7 @@ new IntersectionObserver(([e]) => heroVisible = e.isIntersecting).observe(hero);
     }
     requestAnimationFrame(frame);
   }
-  if (RM) { // static grid
-    ctx.fillStyle = 'rgba(127,178,255,.13)'; pts.forEach(p => { ctx.beginPath(); ctx.arc(p.x,p.y,1.1,0,6.283); ctx.fill(); });
-  } else frame();
+  frame();
 })();
 
 /* ---------- bug hunt ---------- */
@@ -771,7 +946,6 @@ new IntersectionObserver(([e]) => heroVisible = e.isIntersecting).observe(hero);
     if (squashed === N) { hint.textContent = '✓ All bugs squashed. Ship it.'; toast('All bugs squashed. Ready to ship.'); }
     setTimeout(() => spawn(b), 2600 + Math.random() * 2000);
   }
-  if (RM) { list.forEach(b => b.el.style.transform = `translate(${b.x}px,${b.y}px)`); return; }
   let t = 0;
   (function move(){
     if (heroVisible) {
@@ -789,7 +963,7 @@ new IntersectionObserver(([e]) => heroVisible = e.isIntersecting).observe(hero);
 })();
 
 /* ---------- magnetic buttons ---------- */
-if (FINE && !RM) $$('.magnetic').forEach(btn => {
+if (FINE) $$('.magnetic').forEach(btn => {
   btn.addEventListener('pointermove', e => { const r = btn.getBoundingClientRect(); btn.style.transform = `translate(${(e.clientX - r.left - r.width/2) * .28}px,${(e.clientY - r.top - r.height/2) * .35}px)`; });
   btn.addEventListener('pointerleave', () => { btn.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1),background .25s,box-shadow .25s'; btn.style.transform = ''; setTimeout(() => btn.style.transition = '', 500); });
 });
@@ -799,7 +973,7 @@ $$('.card').forEach(c => {
   c.addEventListener('pointermove', e => {
     const r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
     c.style.setProperty('--mx', x + 'px'); c.style.setProperty('--my', y + 'px');
-    if (FINE && !RM && c.classList.contains('tilt')) c.style.transform = `perspective(900px) rotateX(${(y / r.height - .5) * -8}deg) rotateY(${(x / r.width - .5) * 8}deg) translateY(-4px)`;
+    if (FINE && c.classList.contains('tilt')) c.style.transform = `perspective(900px) rotateX(${(y / r.height - .5) * -8}deg) rotateY(${(x / r.width - .5) * 8}deg) translateY(-4px)`;
   });
   c.addEventListener('pointerleave', () => { c.style.transform = ''; });
 });
@@ -819,10 +993,10 @@ tests.forEach(t => {
   const li = document.createElement('li');
   li.innerHTML = `<button class="t" type="button"><span class="t-icon" aria-hidden="true"></span><span class="t-name">${t.name}</span><span class="t-time"></span></button><div class="t-err" role="alert"></div>`;
   list.appendChild(li);
-  li.querySelector('.t').addEventListener('click', () => $(t.target).scrollIntoView({ behavior: RM ? 'auto' : 'smooth' }));
+  li.querySelector('.t').addEventListener('click', () => $(t.target).scrollIntoView({ behavior: 'smooth' }));
 });
 const rows = $$('.t'), errs = $$('.t-err');
-const wait = ms => new Promise(r => setTimeout(r, RM ? 0 : ms));
+const wait = ms => new Promise(r => setTimeout(r, ms));
 let running = false, hasRun = false;
 async function run(bugIndex = -1){
   if (running) return; running = true; hasRun = true; rerunBtn.disabled = bugBtn.disabled = true;
@@ -888,13 +1062,62 @@ function initScroll(){
   if (!HAS_GSAP) {
     counters.forEach(el => el.firstChild.nodeValue = el.dataset.count);
     $$('.tl-item').forEach(i => i.classList.add('lit')); $('#tlFill').style.transform = 'scaleY(1)';
+    $('#track').style.cssText = 'flex-wrap:wrap;width:auto';
     return;
   }
-  // reveals, staggered per parent
+  const mm = gsap.matchMedia();
+
+  // how I work: pinned horizontal scroll (desktop), simple reveal (mobile)
+  mm.add('(min-width: 961px) and (prefers-reduced-motion: no-preference)', () => {
+    const track = $('#track'), dist = () => track.scrollWidth - innerWidth;
+    gsap.to(track, { x: () => -dist(), ease: 'none',
+      scrollTrigger: { trigger: '#process', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: 1, invalidateOnRefresh: true,
+        onUpdate: self => $('#processBar').style.transform = `scaleX(${self.progress})` } });
+    gsap.from('.step-num', { yPercent: 40, opacity: .2, stagger: .1, ease: 'none',
+      scrollTrigger: { trigger: '#process', start: 'top top', end: () => '+=' + dist(), scrub: true } });
+  });
+  mm.add('(max-width: 960px), (prefers-reduced-motion: reduce)', () => {
+    $('#track').style.cssText = matchMedia('(min-width: 961px)').matches ? 'flex-wrap:wrap;width:auto' : '';
+    $$('.step').forEach(s => gsap.from(s, { opacity: 0, y: 60, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: s, start: 'top 88%' } }));
+  });
+
+  // split titles into words that slide up from a mask
+  $$('.title').forEach(t => {
+    t.classList.remove('rv');
+    t.innerHTML = t.textContent.trim().split(/\s+/).map(w => `<span class="wl"><span class="wi">${w}</span></span>`).join(' ');
+    gsap.from(t.querySelectorAll('.wi'), { yPercent: 115, rotate: 4, duration: 1.1, ease: 'expo.out', stagger: .07, scrollTrigger: { trigger: t, start: 'top 85%' } });
+  });
+  // kicker lines
+  $$('.kicker').forEach(k => ScrollTrigger.create({ trigger: k, start: 'top 88%', once: true, onEnter: () => k.classList.add('in') }));
+
+  // skill cards: 3D flip-in
+  const skillCards = $$('.skills .card');
+  skillCards.forEach(c => c.classList.remove('rv'));
+  gsap.fromTo(skillCards, { opacity: 0, y: 90, rotationX: -35, transformPerspective: 900, transformOrigin: '50% 0%' },
+    { opacity: 1, y: 0, rotationX: 0, duration: 1.3, ease: 'expo.out', stagger: .1, clearProps: 'transform,transition',
+      onStart: () => skillCards.forEach(c => c.style.transition = 'none'),
+      scrollTrigger: { trigger: '.skills', start: 'top 85%' } });
+
+  // generic reveals, staggered per parent
   $$('.rv').forEach(el => {
     gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 88%' },
-      delay: (el.parentElement.classList.contains('skills') || el.parentElement.classList.contains('facts')) ? ([...el.parentElement.children].indexOf(el) * .08) : 0 });
+      delay: el.parentElement.classList.contains('facts') ? [...el.parentElement.children].indexOf(el) * .1 : 0 });
   });
+
+  // timeline items slide in
+  $$('.tl-item').forEach(item => gsap.from(item, { opacity: 0, x: -50, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: item, start: 'top 85%' } }));
+
+  // project bullet points stagger in
+  $$('.proj').forEach(p => {
+    gsap.from(p.querySelectorAll('li'), { opacity: 0, x: 40, duration: .9, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: p, start: 'top 70%' } });
+    gsap.from(p.querySelector('h3'), { opacity: 0, y: 30, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: p, start: 'top 75%' } });
+  });
+
+  // contact: fill the outlined word
+  gsap.to('.contact h2 .outline', { backgroundSize: '100% 100%', ease: 'none', scrollTrigger: { trigger: '.contact h2', start: 'top 85%', end: 'top 35%', scrub: true } });
+
+  // stats: stagger cells
+  gsap.from('.stat', { opacity: 0, y: 30, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.stats', start: 'top 90%' } });
   // counters
   counters.forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => countUp(el) }));
   // about words scrub
@@ -903,7 +1126,6 @@ function initScroll(){
   gsap.to('#tlFill', { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#timeline', start: 'top 65%', end: 'bottom 60%', scrub: .5 } });
   $$('.tl-item').forEach(item => ScrollTrigger.create({ trigger: item, start: 'top 62%', onEnter: () => item.classList.add('lit'), onLeaveBack: () => item.classList.remove('lit') }));
   // project stack: shrink cards as the next slides over
-  const mm = gsap.matchMedia();
   mm.add('(min-width: 961px)', () => {
     const cards = $$('.proj');
     cards.forEach((c, i) => {
@@ -913,7 +1135,7 @@ function initScroll(){
     });
   });
   // hero parallax out
-  gsap.to('.hero-inner', { y: -120, opacity: .2, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+  if (!RM) gsap.to('.hero-inner', { y: -120, opacity: .2, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
   ScrollTrigger.refresh();
 }
 </script>
