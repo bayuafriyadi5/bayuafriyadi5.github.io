@@ -591,7 +591,7 @@ nav.top.hide{transform:translate(-50%,-130%)}
       <div class="about-cols">
         <div>
           <p>I went straight from Informatics Engineering at UNIKOM to owning quality end to end at Yesdok, a healthtech startup with web panels, mobile apps, and live payment flows. Alongside it, I handle QA and product for an early-stage team building a villa booking platform.</p>
-          <p>I built the automation stack from scratch: Playwright for web, Appium for mobile, Pytest for API, wired into GitHub Actions. I also write PRDs and acceptance criteria, so quality starts before the first line of code.</p>
+          <p>I built the automation stack from scratch: Playwright for web, Appium for mobile, Pytest for API, wired into GitHub Actions. I also run the developer task board in Jira, so every feature is split, assigned and tracked across Android, iOS and web.</p>
           <p>Outside of work I'm obsessed with how systems fail. I read post-mortems, reverse-engineer edge cases, and think about what "good enough" means when a doctor is mid-consultation.</p>
         </div>
         <div class="facts">
@@ -678,7 +678,7 @@ nav.top.hide{transform:translate(-50%,-130%)}
     </div>
     <div class="track" id="track">
       <div class="step"><span class="orb"></span><div class="step-num">01</div><h3>Idea</h3><p>Start from the user's problem, not the feature list.</p></div>
-      <div class="step"><span class="orb"></span><div class="step-num">02</div><h3>PRD</h3><p>Write the scope, user flows, and acceptance criteria before a line of code.</p></div>
+      <div class="step"><span class="orb"></span><div class="step-num">02</div><h3>Plan</h3><p>Split the feature into Android, iOS and web tasks in Jira, with clear acceptance criteria.</p></div>
       <div class="step"><span class="orb"></span><div class="step-num">03</div><h3>Build</h3><p>Track the build closely and test early, while fixes are still cheap.</p></div>
       <div class="step"><span class="orb"></span><div class="step-num">04</div><h3>Automated tests</h3><p>Playwright, Appium, and Pytest run on every change. Red goes back to build.</p></div>
       <div class="step"><span class="orb"></span><div class="step-num">05</div><h3>Ship</h3><p>Release when everything is green, with alerts watching production.</p></div>
@@ -706,7 +706,7 @@ nav.top.hide{transform:translate(-50%,-130%)}
           <div class="tl-when">2026 to present, part-time</div>
           <div class="tl-role">QA Engineer &amp; Project Manager</div>
           <div class="tl-co">YukPuncak, five apps and portals for a B2B2C villa booking platform</div>
-          <p class="tl-body">Sole QA and PM across the guest iOS/Android app, guest website, admin panel, partner web portal and partner mobile app. Wrote 414 test cases across mobile (121) and web (293), caught a date-picker double-booking bug, and wrote PRDs for six feature phases.</p>
+          <p class="tl-body">Sole QA and PM across the guest iOS/Android app, guest website, admin panel, partner web portal and partner mobile app. Wrote 414 test cases across mobile (121) and web (293), caught a date-picker double-booking bug, and managed developer tasks in Jira.</p>
           <div class="tl-products"><span class="chip">Mobile app</span><span class="chip">Web</span><span class="chip">Partner portal</span></div>
         </div>
         <div class="tl-item">
@@ -886,7 +886,7 @@ if (FINE) {
 
 /* ---------- scramble role text ---------- */
 function startScramble(){
-  const el = $('#scramble'); const words = ['hunts bugs','automates tests','ships quality','writes PRDs','breaks things'];
+  const el = $('#scramble'); const words = ['hunts bugs','automates tests','ships quality','runs the Jira board','breaks things'];
   const chars = '!<>-_\\/[]{}=+*^?#01'; let wi = 0;
   function to(word){
     const from = el.textContent, len = Math.max(from.length, word.length); let f = 0;
